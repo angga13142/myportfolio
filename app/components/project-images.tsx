@@ -48,19 +48,19 @@ export function ImageGallery({ images }: ImageGalleryProps) {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-white text-4xl hover:text-zinc-300"
+            className="absolute top-4 right-4 text-white text-4xl hover:text-zinc-300 z-10"
             onClick={() => setSelectedImage(null)}
           >
             ×
           </button>
           
-          <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
+          <div className="relative w-full max-w-6xl" style={{ aspectRatio: '16/9', maxHeight: '85vh' }}>
             <Image
               src={images[selectedImage].src}
               alt={images[selectedImage].alt}
               fill
               className="object-contain"
-              sizes="100vw"
+              sizes="90vw"
             />
           </div>
 

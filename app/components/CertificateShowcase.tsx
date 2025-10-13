@@ -100,13 +100,14 @@ export function CertificateShowcase({ certificates }: CertificateShowcaseProps) 
               </button>
 
               {/* Certificate Image */}
-              <div className="relative aspect-[3/4] md:aspect-video bg-zinc-950">
+              <div className="relative w-full bg-zinc-950" style={{ aspectRatio: '4/3', maxHeight: '70vh' }}>
                 <Image
                   src={selectedCertificate.image}
                   alt={selectedCertificate.title}
                   fill
                   className="object-contain"
                   priority
+                  sizes="(max-width: 768px) 100vw, 80vw"
                 />
               </div>
 

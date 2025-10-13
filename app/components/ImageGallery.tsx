@@ -106,21 +106,22 @@ export function ImageGallery({ images }: ImageGalleryProps) {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="relative max-w-7xl max-h-[90vh] w-full h-full"
+              className="relative max-w-7xl w-full"
               onClick={(e) => e.stopPropagation()}
+              style={{ maxHeight: '85vh' }}
             >
-              <div className="relative w-full h-full flex items-center justify-center">
+              <div className="relative w-full" style={{ aspectRatio: '16/9', maxHeight: '80vh' }}>
                 <Image
                   src={images[selectedIndex].src}
                   alt={images[selectedIndex].alt}
-                  width={1200}
-                  height={800}
-                  className="object-contain max-h-[80vh]"
+                  fill
+                  className="object-contain"
                   priority
+                  sizes="90vw"
                 />
               </div>
               {images[selectedIndex].caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <div className="mt-4 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-lg">
                   <p className="text-white text-center">
                     {images[selectedIndex].caption}
                   </p>
