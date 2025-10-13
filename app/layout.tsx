@@ -1,5 +1,5 @@
 import "../global.css";
-import { Inter } from "@next/font/google";
+import { Poppins } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
@@ -39,9 +39,13 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
   },
 };
-const inter = Inter({
+
+// Poppins font with multiple weights for better typography
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 const calSans = LocalFont({
@@ -55,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
+    <html lang="en" className={[poppins.variable, calSans.variable].join(" ")}>
       <head>
         <Analytics />
       </head>
