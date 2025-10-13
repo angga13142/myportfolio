@@ -1,17 +1,39 @@
 "use client";
 import { Navigation } from "../components/nav";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function ResumePage() {
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+
+  const certificates = [
+    { name: "SIO Certificate", file: "SIO Yat Kompress.pdf", year: "2023" },
+    { name: "SIM BII Umum", file: "SIM Yat Kompress.pdf", year: "2023" },
+    { name: "DISNAKER Training", file: "SERTIFIKAT DISNAKER Yat Kompres.pdf", year: "2023" },
+    { name: "LPTM Training", file: "SERTIFIKAT LPTM Yat Kompres.pdf", year: "2023" },
+  ];
+
   return (
     <div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
       <Navigation />
       <div className="container min-h-screen px-4 mx-auto mt-32">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
+          {/* Header with Profile Photo */}
           <div className="mb-12 text-center">
+            <div className="flex justify-center mb-6">
+              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-zinc-800">
+                <Image
+                  src="/profile/profile.jpg"
+                  alt="Muhammad Nurhidayat Gani"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
             <h1 className="text-5xl font-bold text-zinc-100 mb-4">Muhammad Nurhidayat Gani</h1>
             <p className="text-xl text-zinc-400 mb-6">Professional Heavy Equipment Operator</p>
-            <div className="flex justify-center gap-6 text-zinc-500">
+            <div className="flex justify-center gap-6 text-zinc-500 flex-wrap">
               <span>📧 mnhidayatgani@gmail.com</span>
               <span>📞 +62 853-4590-2520</span>
             </div>
@@ -130,31 +152,26 @@ export default function ResumePage() {
             </div>
           </section>
 
-          {/* Certifications */}
+          {/* Certifications with PDF Links */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Training & Certifications</h2>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🏆</span>
-                <div>
-                  <h3 className="text-zinc-300 font-semibold">SIO Excavator (Non-Class)</h3>
-                  <p className="text-zinc-500">2023</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🪪</span>
-                <div>
-                  <h3 className="text-zinc-300 font-semibold">SIM BII Umum</h3>
-                  <p className="text-zinc-500">2023</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">📜</span>
-                <div>
-                  <h3 className="text-zinc-300 font-semibold">Heavy Equipment Training Certificate</h3>
-                  <p className="text-zinc-500">2023</p>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {certificates.map((cert) => (
+                <a
+                  key={cert.name}
+                  href={`/certificates/${cert.file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:bg-zinc-900/50 transition-all group cursor-pointer"
+                >
+                  <span className="text-2xl">📜</span>
+                  <div className="flex-1">
+                    <h3 className="text-zinc-300 font-semibold group-hover:text-zinc-100">{cert.name}</h3>
+                    <p className="text-zinc-500 text-sm">{cert.year}</p>
+                    <p className="text-zinc-600 text-xs mt-1 group-hover:text-zinc-400">Click to view certificate →</p>
+                  </div>
+                </a>
+              ))}
             </div>
           </section>
 
