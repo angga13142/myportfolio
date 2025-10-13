@@ -1,16 +1,133 @@
 "use client";
 import { Navigation } from "../components/nav";
+import { Timeline } from "../components/Timeline";
+import { SkillsVisualization } from "../components/SkillBar";
+import { CertificateShowcase } from "../components/CertificateShowcase";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function ResumePage() {
-  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+  const timelineEvents = [
+    {
+      id: "1",
+      title: "Excavator Operator",
+      company: "PT. Nadesico Nickel Industry",
+      location: "Indonesia",
+      period: "2023 - Present",
+      current: true,
+      description: "Operating excavator for nickel mining operations with focus on safety, efficiency, and team coordination.",
+      achievements: [
+        "Operating excavator for nickel mining operations",
+        "Maintaining 95% operational efficiency",
+        "Zero accident record throughout tenure",
+        "Daily production of 800-1,000 BCM",
+        "Conducting comprehensive P2H inspections",
+      ],
+    },
+    {
+      id: "2",
+      title: "Excavator Operator",
+      company: "PT. LTPM Makassar",
+      location: "Makassar, Indonesia",
+      period: "2023",
+      description: "Excavation and material handling operations with emphasis on equipment maintenance and safety protocols.",
+      achievements: [
+        "Excavation and material handling operations",
+        "Routine equipment maintenance and troubleshooting",
+        "Safety protocol implementation",
+        "Team coordination and communication",
+      ],
+    },
+    {
+      id: "3",
+      title: "Excavator Operator",
+      company: "PT. Bintang Bumi Sulawesi",
+      location: "Sulawesi, Indonesia",
+      period: "2021 - 2022",
+      description: "Loading and material transfer operations with focus on efficiency and equipment care.",
+      achievements: [
+        "Loading and material transfer operations",
+        "Daily checkup care and maintenance",
+        "Team coordination and communication",
+        "Consistent production targets achievement",
+      ],
+    },
+  ];
+
+  const skillCategories = [
+    {
+      name: "Equipment Operation",
+      skills: [
+        { name: "Excavator Operation", level: 95 },
+        { name: "Wheel Loader Operation", level: 70 },
+        { name: "Equipment Coordination", level: 90 },
+      ],
+    },
+    {
+      name: "Technical Skills",
+      skills: [
+        { name: "Basic Engine Maintenance", level: 80 },
+        { name: "Daily Checkup (P2H)", level: 95 },
+        { name: "Troubleshooting", level: 75 },
+        { name: "Equipment Optimization", level: 85 },
+      ],
+    },
+    {
+      name: "Safety & Compliance",
+      skills: [
+        { name: "Occupational Safety (K3)", level: 95 },
+        { name: "Risk Assessment", level: 85 },
+        { name: "Emergency Response", level: 80 },
+      ],
+    },
+    {
+      name: "Interpersonal Skills",
+      skills: [
+        { name: "Team Communication", level: 95 },
+        { name: "Leadership & Mentoring", level: 85 },
+        { name: "Problem Solving", level: 80 },
+        { name: "Time Management", level: 85 },
+        { name: "Adaptability", level: 80 },
+      ],
+    },
+  ];
 
   const certificates = [
-    { name: "SIO Certificate", file: "SIO Yat Kompress.pdf", year: "2023" },
-    { name: "SIM BII Umum", file: "SIM Yat Kompress.pdf", year: "2023" },
-    { name: "DISNAKER Training", file: "SERTIFIKAT DISNAKER Yat Kompres.pdf", year: "2023" },
-    { name: "LPTM Training", file: "SERTIFIKAT LPTM Yat Kompres.pdf", year: "2023" },
+    {
+      id: "1",
+      title: "SIO Excavator Certificate (Non-Class)",
+      issuer: "Government of Indonesia",
+      date: "2023",
+      image: "/certificates/SIO Yat Kompress.pdf",
+      description: "Official operating license for excavator operation",
+      downloadUrl: "/certificates/SIO Yat Kompress.pdf",
+    },
+    {
+      id: "2",
+      title: "SIM BII Umum",
+      issuer: "Government of Indonesia",
+      date: "2023",
+      image: "/certificates/SIM Yat Kompress.pdf",
+      description: "General driver's license for heavy vehicles",
+      downloadUrl: "/certificates/SIM Yat Kompress.pdf",
+    },
+    {
+      id: "3",
+      title: "DISNAKER Safety Training",
+      issuer: "Department of Manpower (DISNAKER)",
+      date: "2023",
+      image: "/certificates/SERTIFIKAT DISNAKER Yat Kompres.pdf",
+      description: "Occupational safety and health training certification",
+      downloadUrl: "/certificates/SERTIFIKAT DISNAKER Yat Kompres.pdf",
+    },
+    {
+      id: "4",
+      title: "LPTM Heavy Equipment Training",
+      issuer: "LPTM Training Center",
+      date: "2023",
+      image: "/certificates/SERTIFIKAT LPTM Yat Kompres.pdf",
+      description: "Comprehensive heavy equipment operation training",
+      downloadUrl: "/certificates/SERTIFIKAT LPTM Yat Kompres.pdf",
+    },
   ];
 
   return (
@@ -47,132 +164,22 @@ export default function ResumePage() {
             </p>
           </section>
 
-          {/* Experience */}
+          {/* Experience Timeline */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Experience</h2>
-            <div className="space-y-6">
-              <div className="border-l-2 border-zinc-700 pl-6">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-xl font-bold text-zinc-100">Excavator Operator</h3>
-                    <p className="text-zinc-400">PT. Nadesico Nickel Industry</p>
-                  </div>
-                  <span className="text-zinc-500">2023 - Present</span>
-                </div>
-                <ul className="list-disc list-inside text-zinc-400 space-y-1">
-                  <li>Operating excavator for nickel mining operations</li>
-                  <li>Conducting daily equipment checks (P2H)</li>
-                  <li>Ensuring compliance with safety standards (K3)</li>
-                  <li>Coordinating with team members for efficient operations</li>
-                </ul>
-              </div>
-
-              <div className="border-l-2 border-zinc-700 pl-6">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-xl font-bold text-zinc-100">Excavator Operator</h3>
-                    <p className="text-zinc-400">PT. LTPM Makassar</p>
-                  </div>
-                  <span className="text-zinc-500">2023</span>
-                </div>
-                <ul className="list-disc list-inside text-zinc-400 space-y-1">
-                  <li>Excavation and material handling operations</li>
-                  <li>Routine equipment maintenance and troubleshooting</li>
-                  <li>Safety protocol implementation</li>
-                </ul>
-              </div>
-
-              <div className="border-l-2 border-zinc-700 pl-6">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-xl font-bold text-zinc-100">Excavator Operator</h3>
-                    <p className="text-zinc-400">PT. Bintang Bumi Sulawesi</p>
-                  </div>
-                  <span className="text-zinc-500">2021 - 2022</span>
-                </div>
-                <ul className="list-disc list-inside text-zinc-400 space-y-1">
-                  <li>Loading and material transfer operations</li>
-                  <li>Daily checkup care and maintenance</li>
-                  <li>Team coordination and communication</li>
-                </ul>
-              </div>
-            </div>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Experience</h2>
+            <Timeline events={timelineEvents} />
           </section>
 
-          {/* Technical Skills */}
+          {/* Skills Visualization */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Technical Skills</h2>
-            <div className="space-y-4">
-              {[
-                { skill: "Operating an Excavator", level: 90 },
-                { skill: "Operating a Wheel Loader", level: 65 },
-                { skill: "Basic Excavator Engine Maintenance", level: 75 },
-                { skill: "Daily Checkup Care (P2H)", level: 90 },
-                { skill: "Occupational Safety and Health (K3)", level: 90 },
-              ].map((item) => (
-                <div key={item.skill}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-zinc-300">{item.skill}</span>
-                    <span className="text-zinc-500">{item.level}%</span>
-                  </div>
-                  <div className="w-full bg-zinc-800 rounded-full h-2">
-                    <div
-                      className="bg-zinc-400 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${item.level}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Skills & Expertise</h2>
+            <SkillsVisualization categories={skillCategories} />
           </section>
 
-          {/* Interpersonal Skills */}
+          {/* Certifications Showcase */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Interpersonal Skills</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { skill: "Effective Communication & Team Coordination", level: 95 },
-                { skill: "Time Management", level: 80 },
-                { skill: "Adaptability", level: 70 },
-                { skill: "Problem Solving", level: 70 },
-              ].map((item) => (
-                <div key={item.skill}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-zinc-300">{item.skill}</span>
-                    <span className="text-zinc-500">{item.level}%</span>
-                  </div>
-                  <div className="w-full bg-zinc-800 rounded-full h-2">
-                    <div
-                      className="bg-zinc-400 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${item.level}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Certifications with PDF Links */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Training & Certifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {certificates.map((cert) => (
-                <a
-                  key={cert.name}
-                  href={`/certificates/${cert.file}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:bg-zinc-900/50 transition-all group cursor-pointer"
-                >
-                  <span className="text-2xl">📜</span>
-                  <div className="flex-1">
-                    <h3 className="text-zinc-300 font-semibold group-hover:text-zinc-100">{cert.name}</h3>
-                    <p className="text-zinc-500 text-sm">{cert.year}</p>
-                    <p className="text-zinc-600 text-xs mt-1 group-hover:text-zinc-400">Click to view certificate →</p>
-                  </div>
-                </a>
-              ))}
-            </div>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Training & Certifications</h2>
+            <CertificateShowcase certificates={certificates} />
           </section>
 
           {/* Scope of Work */}
