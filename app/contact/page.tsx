@@ -33,10 +33,10 @@ export default function Example() {
 			<div className="container px-4 mx-auto pt-32 pb-16">
 				{/* Header */}
 				<div className="max-w-4xl mx-auto text-center mb-16">
-					<h1 className="text-4xl md:text-6xl font-bold text-zinc-100 mb-4">
+					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-100 mb-4 tracking-tight">
 						Get in Touch
 					</h1>
-					<p className="text-lg text-zinc-400">
+					<p className="text-base md:text-lg text-zinc-400 leading-relaxed">
 						Let's discuss opportunities, collaborations, or just have a chat about heavy equipment operations.
 					</p>
 				</div>
@@ -73,10 +73,10 @@ export default function Example() {
 				{/* Contact Form */}
 				<div className="max-w-2xl mx-auto">
 					<div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
-						<h2 className="text-2xl font-bold text-zinc-100 mb-2">
+						<h2 className="text-2xl font-bold text-zinc-100 mb-2 tracking-tight">
 							Send a Message
 						</h2>
-						<p className="text-zinc-400 mb-8">
+						<p className="text-zinc-400 mb-8 leading-relaxed">
 							Fill out the form below and I'll get back to you as soon as possible.
 						</p>
 						<ContactForm />

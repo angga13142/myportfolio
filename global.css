@@ -3,8 +3,69 @@
 @tailwind utilities;
 
 @layer base {
+  /* Edge outline for hero text */
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
-} 
+
+  /* Typography Hierarchy with Poppins */
+  h1 {
+    @apply font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply font-semibold;
+  }
+
+  h4 {
+    @apply font-medium;
+  }
+
+  h5, h6 {
+    @apply font-medium;
+  }
+
+  /* Body text optimization */
+  body {
+    @apply font-normal tracking-normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Paragraph spacing */
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Link styles */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Better readability for small text */
+  .text-sm {
+    @apply tracking-wide;
+  }
+
+  .text-xs {
+    @apply tracking-wider;
+  }
+}
+
+@layer utilities {
+  /* Custom letter spacing for display text */
+  .tracking-ultra-wide {
+    letter-spacing: 0.15em;
+  }
+
+  /* Improved text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
 

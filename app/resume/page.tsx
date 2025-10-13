@@ -148,9 +148,9 @@ export default function ResumePage() {
                 />
               </div>
             </div>
-            <h1 className="text-5xl font-bold text-zinc-100 mb-4">Muhammad Nurhidayat Gani</h1>
-            <p className="text-xl text-zinc-400 mb-6">Professional Heavy Equipment Operator</p>
-            <div className="flex justify-center gap-6 text-zinc-500 flex-wrap">
+            <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">Muhammad Nurhidayat Gani</h1>
+            <p className="text-xl text-zinc-400 mb-6 font-medium tracking-wide">Professional Heavy Equipment Operator</p>
+            <div className="flex justify-center gap-6 text-zinc-500 flex-wrap text-sm">
               <span>📧 mnhidayatgani@gmail.com</span>
               <span>📞 +62 853-4590-2520</span>
             </div>
@@ -158,27 +158,27 @@ export default function ResumePage() {
 
           {/* About */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-4 border-b border-zinc-800 pb-2">About Me</h2>
-            <p className="text-zinc-400 leading-relaxed">
+            <h2 className="text-3xl font-bold text-zinc-100 mb-4 border-b border-zinc-800 pb-2 tracking-tight">About Me</h2>
+            <p className="text-zinc-400 leading-relaxed text-base">
               A competent and certified Excavator Heavy Equipment Operator with experience in excavation, loading, and material transfer operations across various projects. Possesses a thorough understanding of occupational safety (K3) standards, routine equipment maintenance (P2H), and technical troubleshooting skills in the field.
             </p>
           </section>
 
           {/* Experience Timeline */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Experience</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Experience</h2>
             <Timeline events={timelineEvents} />
           </section>
 
           {/* Skills Visualization */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Skills & Expertise</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Skills & Expertise</h2>
             <SkillsVisualization categories={skillCategories} />
           </section>
 
           {/* Certifications Showcase */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Training & Certifications</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Training & Certifications</h2>
             <CertificateShowcase certificates={certificates} />
           </section>
 
