@@ -7,18 +7,37 @@ import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-const redis = Redis.fromEnv();
+const redis = process.env.UPSTASH_REDIS_REST_URL 
+  ? Redis.fromEnv()
+  : null;
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
+  let views: Record<string, number> = {};
+  
+  if (redis) {
+    try {
+      const viewsData = await redis.mget<number[]>(
+        ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+      );
+      views = viewsData.reduce((acc, v, i) => {
+        acc[allProjects[i].slug] = v ?? 0;
+        return acc;
+      }, {} as Record<string, number>);
+    } catch (error) {
+      console.warn("Redis not available, using default view counts");
+      views = allProjects.reduce((acc, p) => {
+        acc[p.slug] = 0;
+        return acc;
+      }, {} as Record<string, number>);
+    }
+  } else {
+    // No Redis configured, use default view counts
+    views = allProjects.reduce((acc, p) => {
+      acc[p.slug] = 0;
+      return acc;
+    }, {} as Record<string, number>);
+  }
 
   const featured = allProjects.find((project) => project.slug === "excavator-operations")!;
   const top2 = allProjects.find((project) => project.slug === "nickel-mining-operations");
