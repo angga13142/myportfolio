@@ -5,6 +5,7 @@ import { MatrixTyping } from "./components/typing-animation";
 import { getPersonSchema, getWebSiteSchema, renderJsonLd } from "./lib/structured-data";
 import { AchievementBadges } from "./components/AchievementBadges";
 import { VideoHeroBackground } from "./components/VideoHeroBackground";
+import { CompanyLogos } from "./components/CompanyLogos";
 
 const navigation = [
   { name: "Resume", href: "/resume" },
@@ -85,6 +86,11 @@ export default function Home() {
         {/* Achievement Badges Section */}
         <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 relative z-20">
           <AchievementBadges />
+        </div>
+
+        {/* Company Logos Section */}
+        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative z-20">
+          <CompanyLogos />
         </div>
       </div>
     </>

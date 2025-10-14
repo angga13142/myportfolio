@@ -6,6 +6,11 @@ import { CertificateShowcase } from "../components/CertificateShowcase";
 import { StatsGrid } from "../components/StatCounter";
 import { TestimonialsCarousel } from "../components/Testimonials";
 import { DownloadResumeButton, PrintResumeButton } from "../components/DownloadResume";
+import { EquipmentGallery } from "../components/EquipmentGallery";
+import { ProgressCircles } from "../components/ProgressCircles";
+import { DayInLifeTimeline } from "../components/DayInLifeTimeline";
+import { CompanyLogos } from "../components/CompanyLogos";
+import { BeforeAfterComparison } from "../components/BeforeAfterComparison";
 import Image from "next/image";
 
 export default function ResumePage() {
@@ -288,6 +293,67 @@ export default function ResumePage() {
                 <span className="text-3xl mb-2 block">✈️</span>
                 <p className="text-zinc-400">Travel</p>
               </div>
+            </div>
+          </section>
+
+          {/* Company Experience - Social Proof */}
+          <CompanyLogos />
+
+          {/* Performance Metrics - Circular Progress */}
+          <section className="my-12">
+            <ProgressCircles />
+          </section>
+
+          {/* Equipment Gallery */}
+          <section className="my-12">
+            <EquipmentGallery />
+          </section>
+
+          {/* Day in the Life Timeline */}
+          <section className="my-12">
+            <DayInLifeTimeline />
+          </section>
+
+          {/* Before/After Comparisons */}
+          <section className="my-12">
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Impact & Results</h2>
+            
+            {/* Safety Implementation Results */}
+            <BeforeAfterComparison
+              title="Safety Protocol Implementation"
+              description="Results from comprehensive safety improvement initiative"
+              beforeLabel="Before Initiative"
+              afterLabel="After Initiative"
+              beforeStats={[
+                { label: "Near-miss Incidents", value: "12/month" },
+                { label: "P2H Compliance", value: "75%" },
+                { label: "Safety Training", value: "Quarterly" }
+              ]}
+              afterStats={[
+                { label: "Near-miss Incidents", value: "7/month (-40%)" },
+                { label: "P2H Compliance", value: "98%" },
+                { label: "Safety Training", value: "Monthly" }
+              ]}
+            />
+
+            {/* Productivity Improvement Results */}
+            <div className="mt-8">
+              <BeforeAfterComparison
+                title="Productivity Optimization"
+                description="Results from technique optimization and efficiency improvements"
+                beforeLabel="Before Optimization"
+                afterLabel="After Optimization"
+                beforeStats={[
+                  { label: "Daily Production", value: "650 BCM" },
+                  { label: "Fuel Efficiency", value: "8.5 L/hr" },
+                  { label: "Cycle Time", value: "45 sec" }
+                ]}
+                afterStats={[
+                  { label: "Daily Production", value: "800 BCM (+23%)" },
+                  { label: "Fuel Efficiency", value: "7.0 L/hr (-18%)" },
+                  { label: "Cycle Time", value: "38 sec" }
+                ]}
+              />
             </div>
           </section>
 
