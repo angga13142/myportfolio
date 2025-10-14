@@ -1,5 +1,6 @@
 'use client';
 import { Shield, Zap, TrendingUp, Award, Users, Target } from 'lucide-react';
+import { memo } from 'react';
 
 const achievements = [
   {
@@ -46,7 +47,7 @@ const achievements = [
   }
 ];
 
-export function AchievementBadges() {
+export const AchievementBadges = memo(function AchievementBadges() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 my-12">
       {achievements.map((achievement, index) => {
@@ -55,8 +56,6 @@ export function AchievementBadges() {
           <div
             key={index}
             className="group relative"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
           >
             <div className="relative p-6 bg-gradient-to-br from-zinc-900 to-zinc-800 border border-zinc-700 rounded-xl hover:border-zinc-600 transition-all duration-300 hover:scale-105">
               {/* Gradient accent */}
@@ -87,4 +86,4 @@ export function AchievementBadges() {
       })}
     </div>
   );
-}
+});

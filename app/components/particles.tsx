@@ -11,7 +11,7 @@ interface ParticlesProps {
 	refresh?: boolean;
 }
 
-export default function Particles({
+function Particles({
 	className = "",
 	quantity = 30,
 	staticity = 50,
@@ -26,27 +26,46 @@ export default function Particles({
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
-		if (canvasRef.current) {
-			context.current = canvasRef.current.getContext("2d");
-		}
-		initCanvas();
-		animate();
-		window.addEventListener("resize", initCanvas);
-
-		return () => {
-			window.removeEventListener("resize", initCanvas);
-		};
+		// Delay particle initialization for faster initial load
+		const timer = setTimeout(() => {
+			setIsVisible(true);
+		}, 500);
+		return () => clearTimeout(timer);
 	}, []);
 
 	useEffect(() => {
-		onMouseMove();
-	}, [mousePosition.x, mousePosition.y]);
+		if (!isVisible) return;
+		
+		if (canvasRef.current) {
+			context.current = canvasRef.current.getContext("2d", { alpha: true });
+		}
+		initCanvas();
+		const animationId = requestAnimationFrame(animate);
+		
+		const handleResize = () => {
+			initCanvas();
+		};
+		
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+			cancelAnimationFrame(animationId);
+		};
+	}, [isVisible]);
 
 	useEffect(() => {
+		if (!isVisible) return;
+		onMouseMove();
+	}, [mousePosition.x, mousePosition.y, isVisible]);
+
+	useEffect(() => {
+		if (!isVisible) return;
 		initCanvas();
-	}, [refresh]);
+	}, [refresh, isVisible]);
 
 	const initCanvas = () => {
 		resizeCanvas();
@@ -171,10 +190,10 @@ export default function Particles({
 		circles.current.forEach((circle: Circle, i: number) => {
 			// Handle the alpha value
 			const edge = [
-				circle.x + circle.translateX - circle.size, // distance from left edge
-				canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-				circle.y + circle.translateY - circle.size, // distance from top edge
-				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+				circle.x + circle.translateX - circle.size,
+				canvasSize.current.w - circle.x - circle.translateX - circle.size,
+				circle.y + circle.translateY - circle.size,
+				canvasSize.current.h - circle.y - circle.translateY - circle.size,
 			];
 			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
 			const remapClosestEdge = parseFloat(
@@ -196,19 +215,16 @@ export default function Particles({
 			circle.translateY +=
 				(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
 				ease;
-			// circle gets out of the canvas
+			
 			if (
 				circle.x < -circle.size ||
 				circle.x > canvasSize.current.w + circle.size ||
 				circle.y < -circle.size ||
 				circle.y > canvasSize.current.h + circle.size
 			) {
-				// remove the circle from the array
 				circles.current.splice(i, 1);
-				// create a new circle
 				const newCircle = circleParams();
 				drawCircle(newCircle);
-				// update the circle position
 			} else {
 				drawCircle(
 					{
@@ -226,9 +242,15 @@ export default function Particles({
 		window.requestAnimationFrame(animate);
 	};
 
+	if (!isVisible) {
+		return null;
+	}
+
 	return (
 		<div className={className} ref={canvasContainerRef} aria-hidden="true">
 			<canvas ref={canvasRef} />
 		</div>
 	);
 }
+
+export default React.memo(Particles);

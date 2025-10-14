@@ -1,5 +1,6 @@
 'use client';
 import { Building2, Factory, Mountain } from 'lucide-react';
+import { memo } from 'react';
 
 const companies = [
   {
@@ -25,10 +26,10 @@ const companies = [
   }
 ];
 
-export function CompanyLogos() {
+export const CompanyLogos = memo(function CompanyLogos() {
   return (
     <section className="py-12 border-y border-zinc-800">
-      <div className="text-center mb-8" data-aos="fade-up">
+      <div className="text-center mb-8">
         <h3 className="text-xl font-semibold text-zinc-400 mb-2">
           Trusted by Leading Companies
         </h3>
@@ -44,8 +45,6 @@ export function CompanyLogos() {
             <div
               key={index}
               className="group"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
             >
               <div className="relative p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all duration-300 hover:scale-105 text-center">
                 {/* Gradient overlay on hover */}
@@ -81,7 +80,7 @@ export function CompanyLogos() {
       </div>
 
       {/* Additional stats */}
-      <div className="mt-8 flex justify-center gap-8 flex-wrap" data-aos="fade-up">
+      <div className="mt-8 flex justify-center gap-8 flex-wrap">
         <div className="text-center">
           <div className="text-2xl font-bold text-zinc-100">3</div>
           <div className="text-xs text-zinc-500">Major Companies</div>
@@ -97,4 +96,4 @@ export function CompanyLogos() {
       </div>
     </section>
   );
-}
+});

@@ -4,12 +4,9 @@ import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "./components/analytics";
-import { MobileDebugger } from "./components/MobileDebugger";
 import { UmamiAnalytics } from "./components/UmamiAnalytics";
 import { SkipToContent } from "./components/SkipToContent";
 import { BackToTop } from "./components/BackToTop";
-import { AOSInit } from "./components/AOSInit";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'https://aistorytell.me'),
@@ -116,22 +113,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={[poppins.variable, calSans.variable].join(" ")}>
       <head>
-        <Analytics />
         <UmamiAnalytics />
       </head>
       <body
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}
       >
-        <AOSInit />
         <SkipToContent />
         {children}
         <BackToTop />
         {/* Vercel Analytics & Speed Insights */}
         <VercelAnalytics />
         <SpeedInsights />
-        {/* Mobile debugger - only visible in development */}
-        <MobileDebugger />
       </body>
     </html>
   );
