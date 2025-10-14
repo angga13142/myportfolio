@@ -143,9 +143,10 @@ export function MatrixTyping({
       return (
         <span
           key={index}
-          className={`inline-block transition-all duration-100 ${
+          className={`transition-all duration-100 ${
             isGlitching ? "text-green-400 animate-pulse" : ""
           }`}
+          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
         >
           {displayChar}
         </span>

@@ -106,7 +106,7 @@ export function ProjectHero({
   subtitle?: string;
 }) {
   return (
-    <div className="relative w-full h-64 md:h-96 lg:h-[500px] -mx-4 md:mx-0 md:rounded-lg overflow-hidden">
+    <div className="relative w-full h-64 md:h-96 lg:h-[500px] rounded-lg overflow-hidden">
       <Image
         src={image}
         alt={title}

@@ -30,3 +30,14 @@
   [data-rehype-pretty-code-title] + pre {
     @apply mt-0;
   }
+
+  /* Project content text alignment */
+  article.prose p {
+    @apply text-justify;
+  }
+
+  @media (max-width: 640px) {
+    article.prose p {
+      @apply text-center;
+    }
+  }
