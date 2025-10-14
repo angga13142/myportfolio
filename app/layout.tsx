@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 import { MobileDebugger } from "./components/MobileDebugger";
 import { UmamiAnalytics } from "./components/UmamiAnalytics";
+import { SkipToContent } from "./components/SkipToContent";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
@@ -24,9 +25,20 @@ export const metadata: Metadata = {
     "occupational safety",
     "Indonesia",
     "Sulawesi",
+    "heavy equipment portfolio",
+    "mining professional",
+    "excavator specialist",
+    "safety compliance",
+    "equipment efficiency",
   ],
   authors: [{ name: "Muhammad Nurhidayat Gani" }],
   creator: "Muhammad Nurhidayat Gani",
+  publisher: "Muhammad Nurhidayat Gani",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: "Muhammad Nurhidayat Gani - Portfolio",
     description:
@@ -35,29 +47,48 @@ export const metadata: Metadata = {
     siteName: "Muhammad Nurhidayat Gani Portfolio",
     locale: "en-US",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Nurhidayat Gani - Heavy Equipment Operator Portfolio",
+      },
+    ],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
   twitter: {
-    title: "Muhammad Nurhidayat Gani",
     card: "summary_large_image",
+    title: "Muhammad Nurhidayat Gani - Heavy Equipment Operator",
+    description: "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
+    images: ["/og.png"],
   },
   icons: {
+    icon: "/favicon.png",
     shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
+  manifest: "/site.webmanifest",
   verification: {
     // Add when available
     // google: 'your-google-site-verification-code',
   },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
+  },
+  category: "portfolio",
 };
 
 // Poppins font with multiple weights for better typography
@@ -88,6 +119,7 @@ export default function RootLayout({
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}
       >
+        <SkipToContent />
         {children}
         {/* Mobile debugger - only visible in development */}
         <MobileDebugger />

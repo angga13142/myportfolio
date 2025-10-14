@@ -1,0 +1,21 @@
+{
+  "name": "Muhammad Nurhidayat Gani - Portfolio",
+  "short_name": "MN Gani Portfolio",
+  "description": "Professional Heavy Equipment Operator Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "professional", "engineering"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

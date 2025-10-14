@@ -44,6 +44,27 @@ interface BreadcrumbSchema {
   }>;
 }
 
+interface WebSiteSchema {
+  "@context": "https://schema.org";
+  "@type": "WebSite";
+  name: string;
+  description: string;
+  url: string;
+  author: {
+    "@type": "Person";
+    name: string;
+  };
+  inLanguage: string;
+}
+
+interface ProfilePageSchema {
+  "@context": "https://schema.org";
+  "@type": "ProfilePage";
+  mainEntity: PersonSchema;
+  name: string;
+  description: string;
+}
+
 export function getPersonSchema(): PersonSchema {
   return {
     "@context": "https://schema.org",
@@ -100,6 +121,31 @@ export function getBreadcrumbSchema(items: Array<{ name: string; url: string }>)
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+export function getWebSiteSchema(): WebSiteSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Muhammad Nurhidayat Gani - Professional Portfolio",
+    description: "Professional Heavy Equipment Operator Portfolio showcasing expertise in excavator operations, safety management, and equipment maintenance.",
+    url: process.env.NEXT_PUBLIC_URL || "https://mnhidayatgani.vercel.app",
+    author: {
+      "@type": "Person",
+      name: "Muhammad Nurhidayat Gani",
+    },
+    inLanguage: "en-US",
+  };
+}
+
+export function getProfilePageSchema(): ProfilePageSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: getPersonSchema(),
+    name: "Muhammad Nurhidayat Gani - Professional Heavy Equipment Operator",
+    description: "Professional portfolio and resume of Muhammad Nurhidayat Gani, Heavy Equipment Operator specializing in excavator operations.",
   };
 }
 
