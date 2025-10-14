@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, Download, ExternalLink, X } from "lucide-react";
+import { Award, Download, ExternalLink, X, FileText } from "lucide-react";
 
 interface Certificate {
   id: string;
   title: string;
   issuer: string;
   date: string;
-  image: string;
+  image?: string; // Optional - for image certificates
+  isPDF?: boolean; // Flag for PDF certificates
   description?: string;
   verificationUrl?: string;
   downloadUrl?: string;
@@ -44,19 +45,33 @@ export function CertificateShowcase({ certificates }: CertificateShowcaseProps) 
             className="group relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/50 hover:border-zinc-600 transition-all duration-300 cursor-pointer"
             onClick={() => openModal(cert)}
           >
-            {/* Certificate Image Preview */}
-            <div className="relative aspect-[3/4] overflow-hidden bg-zinc-900">
-              <Image
-                src={cert.image}
-                alt={cert.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Certificate Preview */}
+            <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-zinc-800 to-zinc-900">
+              {cert.isPDF || !cert.image ? (
+                // PDF Certificate - Show Icon
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                  <FileText className="w-20 h-20 text-zinc-400 mb-4" />
+                  <div className="text-center">
+                    <p className="text-sm font-medium text-zinc-300 mb-1">PDF Certificate</p>
+                    <p className="text-xs text-zinc-500">Click to download</p>
+                  </div>
+                </div>
+              ) : (
+                // Image Certificate
+                <>
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </>
+              )}
               
               {/* Overlay Icon */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
                 <Award className="w-12 h-12 text-white" />
               </div>
             </div>
@@ -99,16 +114,41 @@ export function CertificateShowcase({ certificates }: CertificateShowcaseProps) 
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Certificate Image */}
+              {/* Certificate Display */}
               <div className="relative w-full bg-zinc-950" style={{ aspectRatio: '4/3', maxHeight: '70vh' }}>
-                <Image
-                  src={selectedCertificate.image}
-                  alt={selectedCertificate.title}
-                  fill
-                  className="object-contain"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                />
+                {selectedCertificate.isPDF || !selectedCertificate.image ? (
+                  // PDF Certificate - Show Download Prompt
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                    <FileText className="w-32 h-32 text-zinc-400 mb-6" />
+                    <h3 className="text-2xl font-bold text-white mb-2 text-center">
+                      PDF Certificate
+                    </h3>
+                    <p className="text-zinc-400 text-center mb-6">
+                      This certificate is available as a PDF document
+                    </p>
+                    {selectedCertificate.downloadUrl && (
+                      <a
+                        href={selectedCertificate.downloadUrl}
+                        download
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-zinc-200 transition-colors font-medium"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Download className="w-5 h-5" />
+                        Download PDF
+                      </a>
+                    )}
+                  </div>
+                ) : (
+                  // Image Certificate
+                  <Image
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.title}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                )}
               </div>
 
               {/* Certificate Details */}
