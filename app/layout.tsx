@@ -3,6 +3,7 @@ import { Poppins } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import { MobileDebugger } from "./components/MobileDebugger";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
@@ -68,6 +69,8 @@ export default function RootLayout({
           }`}
       >
         {children}
+        {/* Mobile debugger - only visible in development */}
+        <MobileDebugger />
       </body>
     </html>
   );

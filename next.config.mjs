@@ -6,6 +6,13 @@ const nextConfig = {
 	experimental: {
 		mdxRs: true,
 	},
+	// Enable React DevTools in development
+	reactStrictMode: true,
+	// Better mobile debugging
+	devIndicators: {
+		buildActivity: true,
+		buildActivityPosition: 'bottom-right',
+	},
 };
 
 export default withContentlayer(nextConfig);

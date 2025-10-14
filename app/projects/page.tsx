@@ -59,21 +59,24 @@ export default async function ProjectsPage() {
   return (
     <div className="relative pb-16">
       <Navigation />
-      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+      {/* Mobile-optimized container with better spacing */}
+      <div className="px-4 sm:px-6 pt-16 sm:pt-20 mx-auto space-y-6 sm:space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+        {/* Mobile-optimized header */}
         <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100 md:text-4xl lg:text-5xl">
             Projects
           </h2>
-          <p className="mt-4 text-base text-zinc-400 leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
             Showcasing professional excellence through real-world mining operations and safety management projects.
           </p>
         </div>
         <div className="w-full h-px bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+        {/* Mobile-optimized grid layout */}
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 mx-auto lg:grid-cols-2">
           <Card>
             <Link href="/resume">
-              <article className="relative w-full h-full p-4 md:p-8">
+              <article className="relative w-full h-full p-6 sm:p-4 md:p-8">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs text-zinc-100">
                     {featured.date ? (
@@ -96,15 +99,15 @@ export default async function ProjectsPage() {
 
                 <h2
                   id="featured-post"
-                  className="mt-4 text-3xl font-bold text-zinc-100 group-hover:text-white sm:text-4xl font-display tracking-tight"
+                  className="mt-3 sm:mt-4 text-2xl sm:text-3xl font-bold text-zinc-100 group-hover:text-white md:text-4xl font-display tracking-tight"
                 >
                   {featured.title}
                 </h2>
-                <p className="mt-4 leading-relaxed duration-150 text-zinc-400 group-hover:text-zinc-300">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed duration-150 text-zinc-400 group-hover:text-zinc-300">
                   {featured.description}
                 </p>
-                <div className="absolute bottom-4 md:bottom-8">
-                  <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
+                <div className="absolute bottom-4 sm:bottom-4 md:bottom-8">
+                  <p className="text-sm sm:text-base text-zinc-200 hover:text-zinc-50">
                     View Resume <span aria-hidden="true">&rarr;</span>
                   </p>
                 </div>
@@ -112,7 +115,7 @@ export default async function ProjectsPage() {
             </Link>
           </Card>
 
-          <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
+          <div className="flex flex-col w-full gap-6 sm:gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 pt-6 lg:pt-0">
             {[top2, top3].filter(Boolean).map((project) => (
               <Card key={project!.slug}>
                 <Article project={project!} views={views[project!.slug] ?? 0} />
@@ -122,7 +125,8 @@ export default async function ProjectsPage() {
         </div>
         <div className="hidden w-full h-px md:block bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
+        {/* Mobile-optimized grid for remaining projects */}
+        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 sm:grid-cols-2 md:grid-cols-3">
           <div className="grid grid-cols-1 gap-4">
             {sorted
               .filter((_, i) => i % 3 === 0)

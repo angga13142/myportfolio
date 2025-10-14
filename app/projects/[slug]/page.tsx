@@ -55,7 +55,7 @@ export default async function PostPage({ params }: Props) {
       <ReportView slug={project.slug} />
 
       {heroImage && (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <ProjectHero
             image={heroImage}
             title={project.title}
@@ -64,12 +64,19 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
 
-      <article className="px-4 py-12 mx-auto prose prose-zinc prose-quoteless">
+      {/* Mobile-optimized article container */}
+      <article className="px-4 sm:px-6 py-8 sm:py-12 mx-auto prose prose-zinc prose-quoteless
+        prose-headings:text-zinc-900 prose-headings:font-bold
+        prose-p:text-zinc-700 prose-p:leading-relaxed
+        prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
+        prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3
+        prose-ul:my-4 prose-li:my-2
+        max-w-4xl">
         <Mdx code={project.body.code} />
         
         {images.length > 0 && (
-          <div className="not-prose my-12">
-            <h2 className="text-2xl font-bold text-zinc-900 mb-6">Project Gallery</h2>
+          <div className="not-prose my-8 sm:my-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 sm:mb-6">Project Gallery</h2>
             <ImageGallery images={images} />
           </div>
         )}
