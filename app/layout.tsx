@@ -2,6 +2,8 @@ import "../global.css";
 import { Poppins } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "./components/analytics";
 import { MobileDebugger } from "./components/MobileDebugger";
 import { UmamiAnalytics } from "./components/UmamiAnalytics";
@@ -10,7 +12,7 @@ import { BackToTop } from "./components/BackToTop";
 import { AOSInit } from "./components/AOSInit";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'https://aistorytell.me'),
   title: {
     default: "Muhammad Nurhidayat Gani - Portfolio",
     template: "%s | Muhammad Nurhidayat Gani",
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     title: "Muhammad Nurhidayat Gani - Portfolio",
     description:
       "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
-    url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
+    url: process.env.NEXT_PUBLIC_URL || "https://aistorytell.me",
     siteName: "Muhammad Nurhidayat Gani Portfolio",
     locale: "en-US",
     type: "website",
@@ -88,7 +90,7 @@ export const metadata: Metadata = {
     // google: 'your-google-site-verification-code',
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
+    canonical: process.env.NEXT_PUBLIC_URL || "https://aistorytell.me",
   },
   category: "portfolio",
 };
@@ -125,6 +127,9 @@ export default function RootLayout({
         <SkipToContent />
         {children}
         <BackToTop />
+        {/* Vercel Analytics & Speed Insights */}
+        <VercelAnalytics />
+        <SpeedInsights />
         {/* Mobile debugger - only visible in development */}
         <MobileDebugger />
       </body>
