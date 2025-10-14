@@ -3,9 +3,60 @@ import { Navigation } from "../components/nav";
 import { Timeline } from "../components/Timeline";
 import { SkillsVisualization } from "../components/SkillBar";
 import { CertificateShowcase } from "../components/CertificateShowcase";
+import { StatsGrid } from "../components/StatCounter";
+import { TestimonialsCarousel } from "../components/Testimonials";
+import { DownloadResumeButton, PrintResumeButton } from "../components/DownloadResume";
 import Image from "next/image";
 
 export default function ResumePage() {
+  // Career Stats
+  const careerStats = [
+    { value: 95, suffix: "%", label: "Operational Efficiency" },
+    { value: 850, label: "Daily BCM Production" },
+    { value: 96, suffix: "%", label: "Equipment Uptime" },
+    { value: 0, label: "Accident Record" },
+    { value: 40, suffix: "%", label: "Incident Reduction" },
+    { value: 23, suffix: "%", label: "Productivity Increase" },
+    { value: 18, suffix: "%", label: "Fuel Savings" },
+    { value: 85, prefix: "Rp ", suffix: "M+", label: "Annual Savings" },
+  ];
+
+  // Testimonials
+  const testimonials = [
+    {
+      name: "Ahmad Susanto",
+      role: "Site Supervisor",
+      company: "PT. Nadesico Nickel Industry",
+      content: "Muhammad is one of our most reliable operators. His attention to detail in P2H inspections and consistent high productivity make him an invaluable team member. He maintains safety standards while achieving excellent production targets.",
+      rating: 5,
+      relationship: "Worked together at Nadesico Nickel",
+    },
+    {
+      name: "Budi Hartono",
+      role: "Operations Manager",
+      company: "PT. LTPM Makassar",
+      content: "During his time with us, Muhammad demonstrated exceptional technical skills and problem-solving abilities. He was always proactive in identifying potential equipment issues before they became problems, resulting in minimal downtime.",
+      rating: 5,
+      relationship: "Direct supervisor at LTPM",
+    },
+    {
+      name: "Rizki Firmansyah",
+      role: "Maintenance Coordinator",
+      company: "PT. Bintang Bumi Sulawesi",
+      content: "Muhammad's knowledge of excavator maintenance is impressive. He performs thorough daily checks and communicates any concerns clearly. His equipment has consistently been in the best condition among all operators.",
+      rating: 5,
+      relationship: "Worked together at Bintang Bumi",
+    },
+    {
+      name: "Dwi Prasetyo",
+      role: "Safety Officer",
+      company: "PT. Nadesico Nickel Industry",
+      content: "As a safety officer, I appreciate Muhammad's commitment to safety protocols. He never compromises on P2H procedures and actively contributes to our safety culture. His zero-accident record speaks for itself.",
+      rating: 5,
+      relationship: "Safety collaboration at Nadesico",
+    },
+  ];
+
   const timelineEvents = [
     {
       id: "1",
@@ -150,9 +201,15 @@ export default function ResumePage() {
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">Muhammad Nurhidayat Gani</h1>
             <p className="text-xl text-zinc-400 mb-6 font-medium tracking-wide">Professional Heavy Equipment Operator</p>
-            <div className="flex justify-center gap-6 text-zinc-500 flex-wrap text-sm">
+            <div className="flex justify-center gap-6 text-zinc-500 flex-wrap text-sm mb-6">
               <span>📧 mnhidayatgani@gmail.com</span>
               <span>📞 +62 853-4590-2520</span>
+            </div>
+            
+            {/* Download/Print Buttons */}
+            <div className="flex justify-center gap-4 flex-wrap print:hidden">
+              <DownloadResumeButton />
+              <PrintResumeButton />
             </div>
           </div>
 
@@ -162,6 +219,12 @@ export default function ResumePage() {
             <p className="text-zinc-400 leading-relaxed text-base">
               A competent and certified Excavator Heavy Equipment Operator with experience in excavation, loading, and material transfer operations across various projects. Possesses a thorough understanding of occupational safety (K3) standards, routine equipment maintenance (P2H), and technical troubleshooting skills in the field.
             </p>
+          </section>
+
+          {/* Career Impact Stats */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Career Impact</h2>
+            <StatsGrid stats={careerStats} />
           </section>
 
           {/* Experience Timeline */}
@@ -226,6 +289,12 @@ export default function ResumePage() {
                 <p className="text-zinc-400">Travel</p>
               </div>
             </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Professional Recommendations</h2>
+            <TestimonialsCarousel testimonials={testimonials} />
           </section>
         </div>
       </div>
