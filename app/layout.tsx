@@ -4,7 +4,7 @@ import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 import { MobileDebugger } from "./components/MobileDebugger";
-import { GoogleAnalytics } from "./components/GoogleAnalytics";
+import { UmamiAnalytics } from "./components/UmamiAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
@@ -82,7 +82,7 @@ export default function RootLayout({
     <html lang="en" className={[poppins.variable, calSans.variable].join(" ")}>
       <head>
         <Analytics />
-        <GoogleAnalytics />
+        <UmamiAnalytics />
       </head>
       <body
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
