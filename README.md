@@ -248,11 +248,11 @@ aiStory/
 │
 ├── util/                         # Utility functions
 ├── types/                        # TypeScript types
-└── Documentation/                # Project docs
-    ├── IMPROVEMENT_PHASES.md
-    ├── PHASE_3_SUMMARY.md
-    ├── ANALYTICS_SETUP.md
-    └── ...
+└── docs/                         # Documentation
+    ├── guides/                   # Setup & deployment guides
+    ├── reports/                  # Technical reports
+    ├── summaries/                # Session summaries
+    └── archive/                  # Historical docs
 ```
 
 ## 🤝 Contact
@@ -270,16 +270,20 @@ aiStory/
 
 ## 📚 Documentation
 
-Comprehensive guides available:
+All documentation is now organized in the [`docs/`](./docs/) folder:
 
-- **VERCEL_DEPLOYMENT.md** - Complete deployment guide with domain setup ⭐
-- **READY_TO_DEPLOY.md** - Current status and deployment overview
-- **IMPROVEMENT_PHASES.md** - Complete development roadmap
-- **PHASE_3_SUMMARY.md** - Latest phase completion details
-- **ANALYTICS_SETUP.md** - Analytics integration guide
-- **VISUAL_OVERHAUL_COMPLETE.md** - Visual enhancements documentation
-- **TOP_5_IMPLEMENTATION.md** - Feature implementation guide
-- **SESSION_SUMMARY_2025-10-14.md** - Recent development session
+### 🚀 Getting Started
+- **[Deployment Guide](./docs/guides/VERCEL_DEPLOYMENT.md)** - Complete deployment with domain setup ⭐
+- **[Quick Start](./docs/guides/QUICK_START_GUIDE.md)** - Get started quickly
+- **[Analytics Setup](./docs/guides/ANALYTICS_SETUP.md)** - Analytics integration
+
+### 📊 Reports & Summaries
+- **[Performance Report](./docs/reports/PERFORMANCE_OPTIMIZATION.md)** - Latest optimization (45% faster!) ⚡
+- **[Features Summary](./docs/summaries/FEATURES_SUMMARY.md)** - All implemented features
+- **[Phase Reports](./docs/reports/)** - Development phase summaries
+
+### 📖 Full Documentation Index
+See **[docs/README.md](./docs/README.md)** for complete documentation index.
 
 ## 🎨 Features Showcase
 

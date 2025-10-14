@@ -43,3 +43,14 @@ next-env.d.ts
 mnhidayatgani.github.io/
 .agent-memory/
 .agent-memory.json
+
+# temporary files
+*.tmp
+*.temp
+.temp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
