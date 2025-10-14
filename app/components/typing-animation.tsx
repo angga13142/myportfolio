@@ -134,28 +134,45 @@ export function MatrixTyping({
   }, [currentIndex, text, speed, started]);
 
   const renderText = () => {
-    return displayedText.split("").map((char, index) => {
-      const isGlitching = glitchChars.includes(index);
-      const displayChar = isGlitching
-        ? matrixChars[Math.floor(Math.random() * matrixChars.length)]
-        : char;
+    const words = displayedText.split(' ');
+    const result: JSX.Element[] = [];
+    let charIndex = 0;
 
-      return (
-        <span
-          key={index}
-          className={`transition-all duration-100 ${
-            isGlitching ? "text-green-400 animate-pulse" : ""
-          }`}
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-        >
-          {displayChar}
-        </span>
-      );
+    words.forEach((word, wordIndex) => {
+      // Render each character in the word
+      word.split('').forEach((char) => {
+        const isGlitching = glitchChars.includes(charIndex);
+        const displayChar = isGlitching
+          ? matrixChars[Math.floor(Math.random() * matrixChars.length)]
+          : char;
+
+        result.push(
+          <span
+            key={`char-${charIndex}`}
+            className={`transition-all duration-100 ${
+              isGlitching ? "text-green-400 animate-pulse" : ""
+            }`}
+          >
+            {displayChar}
+          </span>
+        );
+        charIndex++;
+      });
+
+      // Add space after word (except last word)
+      if (wordIndex < words.length - 1) {
+        result.push(
+          <span key={`space-${charIndex}`}> </span>
+        );
+        charIndex++; // Count the space character
+      }
     });
+
+    return result;
   };
 
   return (
-    <span className={className}>
+    <span className={`${className} whitespace-normal`}>
       {renderText()}
       {currentIndex < text.length && (
         <span
