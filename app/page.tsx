@@ -7,6 +7,7 @@ import { getPersonSchema, getWebSiteSchema, renderJsonLd } from "./lib/structure
 const navigation = [
   { name: "Resume", href: "/resume" },
   { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
