@@ -3,6 +3,8 @@ import React from "react";
 import Particles from "./components/particles";
 import { MatrixTyping } from "./components/typing-animation";
 import { getPersonSchema, getWebSiteSchema, renderJsonLd } from "./lib/structured-data";
+import { AchievementBadges } from "./components/AchievementBadges";
+import { VideoHeroBackground } from "./components/VideoHeroBackground";
 
 const navigation = [
   { name: "Resume", href: "/resume" },
@@ -27,9 +29,12 @@ export default function Home() {
         dangerouslySetInnerHTML={renderJsonLd(websiteSchema)}
       />
 
-      <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+      <div className="flex flex-col items-center justify-center w-screen min-h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black relative">
+        {/* Video Hero Background */}
+        <VideoHeroBackground />
+        
         {/* Mobile-optimized navigation */}
-        <nav className="my-8 sm:my-12 md:my-16 animate-fade-in" role="navigation" aria-label="Main navigation">
+        <nav className="my-8 sm:my-12 md:my-16 animate-fade-in relative z-20" role="navigation" aria-label="Main navigation">
           <ul className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6">
             {navigation.map((item) => (
               <Link
@@ -44,7 +49,7 @@ export default function Home() {
         </nav>
         
         {/* Decorative line - hidden on mobile */}
-        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" aria-hidden="true" />
+        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 relative z-20" aria-hidden="true" />
         
         {/* Particles - reduced quantity on mobile for performance */}
         <Particles
@@ -53,11 +58,12 @@ export default function Home() {
         />
         
         {/* Main content area with proper landmark */}
-        <main id="main-content" className="z-10 text-center">
+        <main id="main-content" className="z-20 text-center">
           {/* Mobile-optimized hero title */}
           <h1 className="text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display bg-clip-text tracking-wider font-light
             text-3xl px-6 py-4 sm:text-4xl sm:px-4 sm:py-6 md:text-6xl md:py-8 lg:text-8xl xl:text-9xl
-            text-center leading-tight sm:leading-tight md:leading-tight">
+            text-center leading-tight sm:leading-tight md:leading-tight"
+            data-aos="fade-up">
             MUHAMMAD NURHIDAYAT GANI
           </h1>
 
@@ -65,7 +71,7 @@ export default function Home() {
           <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" aria-hidden="true" />
           
           {/* Mobile-optimized subtitle */}
-          <div className="my-8 sm:my-12 md:my-16 text-center animate-fade-in px-6 sm:px-4 max-w-3xl">
+          <div className="my-8 sm:my-12 md:my-16 text-center animate-fade-in px-6 sm:px-4 max-w-3xl" data-aos="fade-up" data-aos-delay="200">
             <h2 className="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed tracking-wide">
               <MatrixTyping 
                 text="Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance."
@@ -75,6 +81,11 @@ export default function Home() {
             </h2>
           </div>
         </main>
+
+        {/* Achievement Badges Section */}
+        <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 relative z-20">
+          <AchievementBadges />
+        </div>
       </div>
     </>
   );

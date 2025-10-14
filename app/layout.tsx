@@ -6,6 +6,8 @@ import { Analytics } from "./components/analytics";
 import { MobileDebugger } from "./components/MobileDebugger";
 import { UmamiAnalytics } from "./components/UmamiAnalytics";
 import { SkipToContent } from "./components/SkipToContent";
+import { BackToTop } from "./components/BackToTop";
+import { AOSInit } from "./components/AOSInit";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
@@ -119,8 +121,10 @@ export default function RootLayout({
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}
       >
+        <AOSInit />
         <SkipToContent />
         {children}
+        <BackToTop />
         {/* Mobile debugger - only visible in development */}
         <MobileDebugger />
       </body>
