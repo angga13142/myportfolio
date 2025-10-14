@@ -4,6 +4,7 @@ import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 import { MobileDebugger } from "./components/MobileDebugger";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
@@ -12,6 +13,20 @@ export const metadata: Metadata = {
     template: "%s | Muhammad Nurhidayat Gani",
   },
   description: "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
+  keywords: [
+    "heavy equipment operator",
+    "excavator operator",
+    "mining operations",
+    "safety management",
+    "equipment maintenance",
+    "P2H inspection",
+    "K3",
+    "occupational safety",
+    "Indonesia",
+    "Sulawesi",
+  ],
+  authors: [{ name: "Muhammad Nurhidayat Gani" }],
+  creator: "Muhammad Nurhidayat Gani",
   openGraph: {
     title: "Muhammad Nurhidayat Gani - Portfolio",
     description:
@@ -39,6 +54,10 @@ export const metadata: Metadata = {
   icons: {
     shortcut: "/favicon.png",
   },
+  verification: {
+    // Add when available
+    // google: 'your-google-site-verification-code',
+  },
 };
 
 // Poppins font with multiple weights for better typography
@@ -63,6 +82,7 @@ export default function RootLayout({
     <html lang="en" className={[poppins.variable, calSans.variable].join(" ")}>
       <head>
         <Analytics />
+        <GoogleAnalytics />
       </head>
       <body
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined

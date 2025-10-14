@@ -7,6 +7,8 @@ import { ReportView } from "./view";
 import { Redis } from "@upstash/redis";
 import { ImageGallery, ProjectHero } from "@/app/components/project-images";
 import { getProjectImages, getHeroImage } from "../project-images";
+import { Breadcrumbs } from "@/app/components/Breadcrumbs";
+import { getProjectSchema, getBreadcrumbSchema, renderJsonLd } from "@/app/lib/structured-data";
 
 export const revalidate = 60;
 
@@ -49,38 +51,71 @@ export default async function PostPage({ params }: Props) {
   const images = getProjectImages(slug);
   const heroImage = getHeroImage(slug);
 
+  // Structured data for SEO
+  const projectSchema = getProjectSchema({
+    title: project.title,
+    description: project.description,
+    date: project.date,
+  });
+
+  const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: baseUrl },
+    { name: "Projects", url: `${baseUrl}/projects` },
+    { name: project.title, url: `${baseUrl}/projects/${slug}` },
+  ]);
+
   return (
-    <div className="bg-zinc-50 min-h-screen">
-      <Header project={project} views={views} />
-      <ReportView slug={project.slug} />
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={renderJsonLd(projectSchema)}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={renderJsonLd(breadcrumbSchema)}
+      />
 
-      {heroImage && (
-        <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <ProjectHero
-            image={heroImage}
-            title={project.title}
-            subtitle={project.description}
-          />
-        </div>
-      )}
+      <div className="bg-zinc-50 min-h-screen">
+        <Header project={project} views={views} />
+        <ReportView slug={project.slug} />
 
-      {/* Mobile-optimized article container */}
-      <article className="px-4 sm:px-6 py-8 sm:py-12 mx-auto prose prose-zinc prose-quoteless
-        prose-headings:text-zinc-900 prose-headings:font-bold
-        prose-p:text-zinc-700 prose-p:leading-relaxed
-        prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
-        prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3
-        prose-ul:my-4 prose-li:my-2
-        max-w-4xl">
-        <Mdx code={project.body.code} />
-        
-        {images.length > 0 && (
-          <div className="not-prose my-8 sm:my-12">
-            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 sm:mb-6">Project Gallery</h2>
-            <ImageGallery images={images} />
+        {heroImage && (
+          <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+            <Breadcrumbs />
+            <ProjectHero
+              image={heroImage}
+              title={project.title}
+              subtitle={project.description}
+            />
           </div>
         )}
-      </article>
-    </div>
+
+        {!heroImage && (
+          <div className="container mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+            <Breadcrumbs />
+          </div>
+        )}
+
+        {/* Mobile-optimized article container */}
+        <article className="px-4 sm:px-6 py-8 sm:py-12 mx-auto prose prose-zinc prose-quoteless
+          prose-headings:text-zinc-900 prose-headings:font-bold
+          prose-p:text-zinc-700 prose-p:leading-relaxed
+          prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
+          prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3
+          prose-ul:my-4 prose-li:my-2
+          max-w-4xl">
+          <Mdx code={project.body.code} />
+          
+          {images.length > 0 && (
+            <div className="not-prose my-8 sm:my-12">
+              <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 sm:mb-6">Project Gallery</h2>
+              <ImageGallery images={images} />
+            </div>
+          )}
+        </article>
+      </div>
+    </>
   );
 }
