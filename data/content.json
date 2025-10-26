@@ -1,0 +1,111 @@
+{
+  "operationsVideos": [
+    {
+      "id": "excavator-operations",
+      "title": "Excavator Operations Excellence",
+      "youtubeId": "3M6aPbFi2JA",
+      "category": "operations",
+      "duration": "13:30",
+      "description": "Demonstrasi operasi excavator profesional di site aktif"
+    },
+    {
+      "id": "safety-check",
+      "title": "P2H Safety Check Demonstration",
+      "youtubeId": "dQw4w9WgXcQ",
+      "category": "safety",
+      "duration": "5:30",
+      "description": "Prosedur pemeriksaan keselamatan sebelum operasi"
+    },
+    {
+      "id": "material-loading",
+      "title": "High-Efficiency Material Loading",
+      "youtubeId": "dQw4w9WgXcQ",
+      "category": "operations",
+      "duration": "4:15",
+      "description": "Teknik loading material dengan efisiensi tinggi"
+    },
+    {
+      "id": "operator-training",
+      "title": "Junior Operator Training Session",
+      "youtubeId": "dQw4w9WgXcQ",
+      "category": "training",
+      "duration": "6:20",
+      "description": "Sesi pelatihan untuk operator junior"
+    },
+    {
+      "id": "video-1761483670564",
+      "title": "New Video",
+      "youtubeId": "",
+      "category": "operations",
+      "duration": "0:00",
+      "description": ""
+    },
+    {
+      "id": "video-1761483673066",
+      "title": "New Video",
+      "youtubeId": "",
+      "category": "operations",
+      "duration": "0:00",
+      "description": ""
+    },
+    {
+      "id": "video-1761483673075",
+      "title": "New Video",
+      "youtubeId": "",
+      "category": "operations",
+      "duration": "0:00",
+      "description": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "Ahmad Syahrul",
+      "role": "Site Supervisor",
+      "company": "PT Mining Excellence",
+      "videoUrl": "/testimonials/supervisor.mp4",
+      "rating": 5,
+      "date": "2024-12-15",
+      "text": "Operator yang sangat profesional dan teliti dalam bekerja"
+    },
+    {
+      "id": "testimonial-2",
+      "name": "Budi Santoso",
+      "role": "Operations Manager",
+      "company": "PT Mining Excellence",
+      "videoUrl": "/testimonials/manager.mp4",
+      "rating": 5,
+      "date": "2024-12-10",
+      "text": "Koordinasi tim yang excellent dan problem-solving yang baik"
+    },
+    {
+      "id": "testimonial-3",
+      "name": "Rahmat Hidayat",
+      "role": "Maintenance Coordinator",
+      "company": "PT Mining Excellence",
+      "videoUrl": "/testimonials/peer.mp4",
+      "rating": 5,
+      "date": "2024-12-05",
+      "text": "Sangat peduli dengan perawatan equipment dan kerjasama tim"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gallery-1",
+      "url": "/projects/excavator-1.jpg",
+      "alt": "Excavator operations",
+      "category": "operations",
+      "caption": "Daily operations at mining site",
+      "order": 1
+    },
+    {
+      "id": "gallery-2",
+      "url": "/projects/excavator-2.jpg",
+      "alt": "Safety inspection",
+      "category": "safety",
+      "caption": "Pre-operation safety check",
+      "order": 2
+    }
+  ],
+  "lastUpdated": "2025-10-26T13:01:38.600Z"
+}

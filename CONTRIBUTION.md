@@ -7,6 +7,7 @@ This pull request adds comprehensive professional features and performance optim
 ## ✨ Features Added (17 Total)
 
 ### 📊 Performance Optimizations (8 Features)
+
 1. **Particles Optimization** - Reduced particles on mobile, auto-pause on inactive tabs, disabled on low-end devices
 2. **Image Loading** - Lazy loading for galleries, optimized cache TTL, reduced image sizes
 3. **Font Optimization** - Reduced Poppins weights, added preload & fallback fonts, display swap
@@ -17,35 +18,41 @@ This pull request adds comprehensive professional features and performance optim
 8. **Redis Revalidation** - Increased cache time from 60s to 3600s for view counts
 
 ### 🎨 Animation & Typography (Phase 1)
+
 - **Fluid Typography** - Responsive text scaling with CSS clamp()
 - **Better Easing** - Natural cubic-bezier animations
 - **Micro-interactions** - hover-lift, hover-glow, hover-scale effects
 - **Glass Morphism** - Modern backdrop blur effects
 
 ### 💼 Professional Features - Phase 1 (4 Features)
+
 1. **WhatsApp Floating Button** - Instant contact with quick message templates
 2. **Newsletter Signup** - Email subscription with Resend API integration
 3. **Skills Matrix** - Interactive radar chart showcasing certifications & competencies
 4. **Safety Dashboard** - Visual charts for safety metrics, heat maps, achievements
 
 ### 🚀 Differentiation Features - Phase 2 (3 Features)
+
 1. **Video Testimonials** - Professional video player with controls, ratings, dates
 2. **Interactive Career Timeline** - Vertical timeline with modal details, animations, company logos
 3. **3D Equipment Showcase** - Interactive 3D excavator model with React Three Fiber, orbit controls, hotspots
 
 ### 🌐 Scale Features - Phase 3 (4 Features)
+
 1. **PDF Case Studies Generator** - Professional downloadable PDFs with jsPDF
 2. **Multi-language Support** - Custom lightweight i18n (EN/ID) with 90+ translation keys
 3. **Equipment Maintenance Log** - Interactive tracking with charts & analytics, CSV export
 4. **Analytics Tracking** - Google Analytics 4 integration with comprehensive event tracking
 
 ### 🎬 Content Enhancement
+
 1. **Operations Video Showcase** - YouTube embed gallery for operations demonstrations
 2. **Video Integration Guide** - Comprehensive documentation for adding real videos
 
 ## 📦 Technical Details
 
 ### Dependencies Added
+
 ```json
 {
   "jspdf": "^2.5.2",
@@ -58,18 +65,21 @@ This pull request adds comprehensive professional features and performance optim
 ```
 
 ### Build Performance
+
 - Homepage: 94.2 KB (optimized)
 - Resume: 277 KB (feature-rich)
 - Projects: 241 KB
 - All pages compiled successfully with zero errors
 
 ### Browser Support
+
 - Modern browsers (Chrome, Firefox, Safari, Edge)
 - Mobile responsive (tested on various screen sizes)
 - Progressive enhancement (features degrade gracefully)
 - Accessibility compliant (ARIA labels, keyboard navigation)
 
 ### Performance Improvements
+
 - Bundle size: -70KB total from optimizations
 - CPU usage: -40% (particles optimization)
 - Initial load: -30-40% faster
@@ -79,6 +89,7 @@ This pull request adds comprehensive professional features and performance optim
 ## 🗂️ File Structure
 
 ### New Components
+
 ```
 app/components/
 ├── DownloadCaseStudy.tsx           # PDF generator button
@@ -97,6 +108,7 @@ app/components/
 ```
 
 ### New Libraries
+
 ```
 app/lib/
 ├── analytics.ts                    # GA4 tracking functions
@@ -107,6 +119,7 @@ app/lib/
 ```
 
 ### Internationalization
+
 ```
 app/i18n/
 ├── config.ts                       # i18n configuration
@@ -118,6 +131,7 @@ app/i18n/
 ```
 
 ### Documentation
+
 ```
 docs/
 ├── VIDEO_INTEGRATION_GUIDE.md              # Video upload guide
@@ -135,6 +149,7 @@ docs/
 ## 🧪 Testing
 
 ### Build Testing
+
 ```bash
 ✅ pnpm build - Successful
 ✅ TypeScript compilation - No errors
@@ -143,6 +158,7 @@ docs/
 ```
 
 ### Manual Testing Checklist
+
 - [x] Homepage loads correctly
 - [x] All animations work smoothly
 - [x] 3D showcase interactive controls
@@ -160,6 +176,7 @@ docs/
 ## 🔧 Configuration Required
 
 ### Environment Variables
+
 ```bash
 # Required for newsletter
 RESEND_API_KEY=re_xxxxx
@@ -173,6 +190,7 @@ UPSTASH_REDIS_REST_TOKEN=xxxxx
 ```
 
 ### User Actions Needed After Merge
+
 1. **Upload Operations Videos** - Replace placeholder YouTube IDs in `OperationsVideoShowcase.tsx`
 2. **Configure GA4** - Set up Google Analytics measurement ID
 3. **Add Newsletter API** - Configure Resend API key
@@ -182,6 +200,7 @@ UPSTASH_REDIS_REST_TOKEN=xxxxx
 ## 📊 Impact Assessment
 
 ### Before
+
 - Basic portfolio with static content
 - Limited engagement features
 - No performance optimizations
@@ -189,6 +208,7 @@ UPSTASH_REDIS_REST_TOKEN=xxxxx
 - No analytics tracking
 
 ### After
+
 - **17 professional features** fully integrated
 - **Interactive 3D showcase** of equipment
 - **Multi-language support** (EN/ID)
@@ -199,6 +219,7 @@ UPSTASH_REDIS_REST_TOKEN=xxxxx
 - **Mobile responsive** with better UX
 
 ### Expected Results
+
 - 📈 50-70% increase in page engagement time
 - 📈 Higher conversion for contact inquiries
 - 📈 Better SEO with video rich snippets
@@ -208,13 +229,16 @@ UPSTASH_REDIS_REST_TOKEN=xxxxx
 ## 🚀 Deployment
 
 ### Vercel Deployment
+
 This project is optimized for Vercel deployment:
+
 - Auto-deploys on merge to main
 - Environment variables configured in dashboard
 - Custom domain: aistorytell.me
 - Region: Singapore (sin1)
 
 ### Post-Deployment Verification
+
 1. Check all pages load correctly
 2. Verify analytics events fire
 3. Test video embeds play
@@ -229,6 +253,7 @@ This project is optimized for Vercel deployment:
 ## 🙏 Acknowledgments
 
 This contribution includes:
+
 - Performance optimizations inspired by Next.js best practices
 - 3D visualization using React Three Fiber
 - Analytics integration with Google Analytics 4
@@ -239,6 +264,7 @@ This contribution includes:
 ## 📞 Support
 
 For questions or issues:
+
 - Check documentation in `/docs` folder
 - Review component code for usage examples
 - Test locally with `pnpm dev`

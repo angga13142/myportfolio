@@ -2,56 +2,58 @@
 
 import { Play, Video, Award, Shield, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import contentData from "@/data/content.json";
 
 interface VideoItem {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   youtubeId: string; // YouTube video ID for embedding
   thumbnail?: string;
   category: "operations" | "safety" | "training" | "achievement";
   duration?: string;
 }
 
-// Sample videos - Replace these YouTube IDs with your actual operation videos
-const sampleVideos: VideoItem[] = [
-  {
-    id: "excavator-operations",
-    title: "Excavator Operations Excellence",
-    description:
-      "Professional excavator operations demonstrating precision digging and material handling techniques in nickel mining site.",
-    youtubeId: "dQw4w9WgXcQ", // REPLACE with actual video
-    category: "operations",
-    duration: "3:45",
-  },
-  {
-    id: "safety-protocols",
-    title: "P2H Safety Check Demonstration",
-    description:
-      "Complete P2H (Pre-Operation Check) safety inspection procedure following K3 standards.",
-    youtubeId: "dQw4w9WgXcQ", // REPLACE with actual video
-    category: "safety",
-    duration: "5:20",
-  },
-  {
-    id: "productivity",
-    title: "High-Efficiency Material Loading",
-    description:
-      "Advanced loading techniques achieving 800+ BCM daily production with optimized fuel efficiency.",
-    youtubeId: "dQw4w9WgXcQ", // REPLACE with actual video
-    category: "achievement",
-    duration: "4:15",
-  },
-  {
-    id: "training",
-    title: "Junior Operator Training Session",
-    description:
-      "Hands-on training demonstration for new operators covering basic controls and safety procedures.",
-    youtubeId: "dQw4w9WgXcQ", // REPLACE with actual video
-    category: "training",
-    duration: "6:30",
-  },
-];
+// Load videos from content.json (managed via admin panel)
+const sampleVideos: VideoItem[] =
+  (contentData.operationsVideos as VideoItem[]) || [
+    {
+      id: "excavator-operations",
+      title: "Excavator Operations Excellence",
+      description:
+        "Professional excavator operations demonstrating precision digging and material handling techniques in nickel mining site.",
+      youtubeId: "dQw4w9WgXcQ", // Fallback - manage via /admin/videos
+      category: "operations",
+      duration: "3:45",
+    },
+    {
+      id: "safety-protocols",
+      title: "P2H Safety Check Demonstration",
+      description:
+        "Complete P2H (Pre-Operation Check) safety inspection procedure following K3 standards.",
+      youtubeId: "dQw4w9WgXcQ", // Fallback - manage via /admin/videos
+      category: "safety",
+      duration: "5:20",
+    },
+    {
+      id: "productivity",
+      title: "High-Efficiency Material Loading",
+      description:
+        "Advanced loading techniques achieving 800+ BCM daily production with optimized fuel efficiency.",
+      youtubeId: "dQw4w9WgXcQ", // Fallback - manage via /admin/videos
+      category: "achievement",
+      duration: "4:15",
+    },
+    {
+      id: "training",
+      title: "Junior Operator Training Session",
+      description:
+        "Hands-on training demonstration for new operators covering basic controls and safety procedures.",
+      youtubeId: "dQw4w9WgXcQ", // Fallback - manage via /admin/videos
+      category: "training",
+      duration: "6:30",
+    },
+  ];
 
 const categoryIcons = {
   operations: Video,
