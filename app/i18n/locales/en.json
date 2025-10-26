@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "blog": "Blog",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Muhammad Nurhidayat Gani",
+    "title": "Professional Heavy Equipment Operator",
+    "subtitle": "Specializing in excavator operations, safety management, and mining productivity optimization",
+    "cta": {
+      "projects": "View Projects",
+      "contact": "Get in Touch"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Professional portfolio showcasing my experience in heavy equipment operations, safety management, and productivity optimization",
+    "viewCount": "view",
+    "viewCount_plural": "views",
+    "category": {
+      "all": "All Projects",
+      "operations": "Operations",
+      "safety": "Safety",
+      "productivity": "Productivity",
+      "maintenance": "Maintenance"
+    },
+    "readMore": "Read More",
+    "backToProjects": "Back to Projects",
+    "gallery": "Project Gallery",
+    "downloadCaseStudy": "Download Case Study",
+    "downloadingPDF": "Generating PDF...",
+    "downloadInfo": "Professional PDF case study with project details, metrics, and achievements"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights and knowledge sharing about heavy equipment operations, safety practices, and industry best practices",
+    "readTime": "min read",
+    "readMore": "Read Article",
+    "backToBlog": "Back to Blog",
+    "tags": "Tags",
+    "relatedArticles": "Related Articles"
+  },
+  "resume": {
+    "title": "Resume",
+    "subtitle": "Professional Experience & Qualifications",
+    "downloadPDF": "Download Resume",
+    "sections": {
+      "about": "About Me",
+      "experience": "Work Experience",
+      "skills": "Skills",
+      "certifications": "Certifications",
+      "achievements": "Key Achievements",
+      "safety": "Safety Record",
+      "equipment": "Equipment Proficiency",
+      "contact": "Contact Information"
+    },
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Completed",
+      "safetyRecord": "Safety Record",
+      "efficiency": "Efficiency Rate"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's discuss your heavy equipment operation needs",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again or contact me directly."
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "location": "Location",
+      "availability": "Available for"
+    }
+  },
+  "newsletter": {
+    "title": "Subscribe to Newsletter",
+    "description": "Get the latest insights about heavy equipment operations and safety practices",
+    "placeholder": "Enter your email",
+    "button": "Subscribe",
+    "subscribing": "Subscribing...",
+    "success": "Successfully subscribed! Check your email.",
+    "error": "Subscription failed. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "builtWith": "Built with",
+    "and": "and",
+    "deployedOn": "Deployed on"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "backToHome": "Back to Home",
+    "notFound": "Page Not Found",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "close": "Close",
+    "open": "Open",
+    "menu": "Menu",
+    "language": "Language",
+    "share": "Share",
+    "download": "Download",
+    "viewAll": "View All",
+    "showMore": "Show More",
+    "showLess": "Show Less"
+  },
+  "seo": {
+    "defaultTitle": "Muhammad Nurhidayat Gani - Professional Heavy Equipment Operator",
+    "defaultDescription": "Professional portfolio of Muhammad Nurhidayat Gani, specializing in excavator operations, safety management, and mining productivity optimization"
+  }
+}

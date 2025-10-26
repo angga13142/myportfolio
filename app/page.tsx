@@ -1,11 +1,26 @@
 import Link from "next/link";
 import React, { Suspense } from "react";
-import { getPersonSchema, getWebSiteSchema, renderJsonLd } from "./lib/structured-data";
+import {
+  getPersonSchema,
+  getWebSiteSchema,
+  renderJsonLd,
+} from "./lib/structured-data";
 
 // Lazy load heavy components
 const Particles = React.lazy(() => import("./components/particles"));
-const AchievementBadges = React.lazy(() => import("./components/AchievementBadges").then(mod => ({ default: mod.AchievementBadges })));
-const CompanyLogos = React.lazy(() => import("./components/CompanyLogos").then(mod => ({ default: mod.CompanyLogos })));
+const AchievementBadges = React.lazy(() =>
+  import("./components/AchievementBadges").then((mod) => ({
+    default: mod.AchievementBadges,
+  }))
+);
+const CompanyLogos = React.lazy(() =>
+  import("./components/CompanyLogos").then((mod) => ({
+    default: mod.CompanyLogos,
+  }))
+);
+const OperationsVideoShowcase = React.lazy(
+  () => import("./components/OperationsVideoShowcase")
+);
 
 const navigation = [
   { name: "Resume", href: "/resume" },
@@ -39,25 +54,32 @@ export default function Home() {
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500/30 rounded-full mix-blend-multiply filter blur-3xl" />
           </div>
         </div>
-        
+
         {/* Mobile-optimized navigation */}
-        <nav className="my-8 sm:my-12 md:my-16 animate-fade-in relative z-20" role="navigation" aria-label="Main navigation">
+        <nav
+          className="my-8 sm:my-12 md:my-16 animate-fade-in relative z-20"
+          role="navigation"
+          aria-label="Main navigation"
+        >
           <ul className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6">
             {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-xs sm:text-sm duration-500 text-zinc-500 hover:text-zinc-300 px-2 py-1"
+                className="text-fluid-sm duration-fast ease-smooth text-zinc-500 hover:text-zinc-300 px-2 py-1 hover-lift transition-all"
               >
                 {item.name}
               </Link>
             ))}
           </ul>
         </nav>
-        
+
         {/* Decorative line - hidden on mobile */}
-        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 relative z-20" aria-hidden="true" />
-        
+        <div
+          className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 relative z-20"
+          aria-hidden="true"
+        />
+
         {/* Particles - lazy loaded for performance */}
         <Suspense fallback={null}>
           <Particles
@@ -65,23 +87,26 @@ export default function Home() {
             quantity={50}
           />
         </Suspense>
-        
+
         {/* Main content area with proper landmark */}
-        <main id="main-content" className="z-20 text-center">
-          {/* Mobile-optimized hero title */}
-          <h1 className="text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display bg-clip-text tracking-wider font-light
-            text-3xl px-6 py-4 sm:text-4xl sm:px-4 sm:py-6 md:text-6xl md:py-8 lg:text-8xl xl:text-9xl
-            text-center leading-tight sm:leading-tight md:leading-tight">
+        <main id="main-content" className="z-20 text-center px-4">
+          {/* Mobile-optimized hero title with fluid typography */}
+          <h1 className="text-fluid-hero-xl leading-ultra-tight tracking-tight text-transparent bg-white cursor-default text-edge-outline animate-title font-display bg-clip-text font-light text-balance">
             MUHAMMAD NURHIDAYAT GANI
           </h1>
 
           {/* Decorative line - hidden on mobile */}
-          <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" aria-hidden="true" />
-          
-          {/* Mobile-optimized subtitle - No typing animation for faster load */}
-          <div className="my-8 sm:my-12 md:my-16 text-center animate-fade-in px-6 sm:px-4 max-w-3xl">
-            <h2 className="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed tracking-wide">
-              Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.
+          <div
+            className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0"
+            aria-hidden="true"
+          />
+
+          {/* Mobile-optimized subtitle with fluid typography */}
+          <div className="my-8 sm:my-12 md:my-16 text-center animate-fade-in px-6 sm:px-4 max-w-3xl mx-auto">
+            <h2 className="text-fluid-base leading-body tracking-normal text-zinc-400">
+              Professional Heavy Equipment Operator specializing in excavator
+              operations, with expertise in safety standards and equipment
+              maintenance.
             </h2>
           </div>
         </main>
@@ -97,6 +122,13 @@ export default function Home() {
         <Suspense fallback={<div className="w-full h-48" />}>
           <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 relative z-20">
             <CompanyLogos />
+          </div>
+        </Suspense>
+
+        {/* Operations Video Showcase - Lazy loaded */}
+        <Suspense fallback={<div className="w-full h-96" />}>
+          <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 relative z-20">
+            <OperationsVideoShowcase />
           </div>
         </Suspense>
       </div>

@@ -7,18 +7,17 @@ import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-const redis = process.env.UPSTASH_REDIS_REST_URL 
-  ? Redis.fromEnv()
-  : null;
+const redis = process.env.UPSTASH_REDIS_REST_URL ? Redis.fromEnv() : null;
 
-export const revalidate = 60;
+// Revalidate every 1 hour instead of 60 seconds (view count tidak perlu real-time)
+export const revalidate = 3600;
 export default async function ProjectsPage() {
   let views: Record<string, number> = {};
-  
+
   if (redis) {
     try {
       const viewsData = await redis.mget<number[]>(
-        ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+        ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":"))
       );
       views = viewsData.reduce((acc, v, i) => {
         acc[allProjects[i].slug] = v ?? 0;
@@ -39,21 +38,27 @@ export default async function ProjectsPage() {
     }, {} as Record<string, number>);
   }
 
-  const featured = allProjects.find((project) => project.slug === "excavator-operations")!;
-  const top2 = allProjects.find((project) => project.slug === "nickel-mining-operations");
-  const top3 = allProjects.find((project) => project.slug === "safety-implementation");
+  const featured = allProjects.find(
+    (project) => project.slug === "excavator-operations"
+  )!;
+  const top2 = allProjects.find(
+    (project) => project.slug === "nickel-mining-operations"
+  );
+  const top3 = allProjects.find(
+    (project) => project.slug === "safety-implementation"
+  );
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
       (project) =>
         project.slug !== featured.slug &&
         project.slug !== top2?.slug &&
-        project.slug !== top3?.slug,
+        project.slug !== top3?.slug
     )
     .sort(
       (a, b) =>
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime()
     );
 
   return (
@@ -67,7 +72,8 @@ export default async function ProjectsPage() {
             Projects
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
-            Showcasing professional excellence through real-world mining operations and safety management projects.
+            Showcasing professional excellence through real-world mining
+            operations and safety management projects.
           </p>
         </div>
         <div className="w-full h-px bg-zinc-800" />
@@ -92,7 +98,7 @@ export default async function ProjectsPage() {
                   <span className="flex items-center gap-1 text-xs text-zinc-500">
                     <Eye className="w-4 h-4" />{" "}
                     {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                      views[featured.slug] ?? 0,
+                      views[featured.slug] ?? 0
                     )}
                   </span>
                 </div>

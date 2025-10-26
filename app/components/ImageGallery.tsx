@@ -59,6 +59,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
               src={image.src}
               alt={image.alt}
               fill
+              loading="lazy"
               className="object-cover transition-transform duration-300 hover:scale-110"
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
@@ -108,9 +109,12 @@ export function ImageGallery({ images }: ImageGalleryProps) {
               exit={{ scale: 0.9 }}
               className="relative max-w-7xl w-full"
               onClick={(e) => e.stopPropagation()}
-              style={{ maxHeight: '85vh' }}
+              style={{ maxHeight: "85vh" }}
             >
-              <div className="relative w-full" style={{ aspectRatio: '16/9', maxHeight: '80vh' }}>
+              <div
+                className="relative w-full"
+                style={{ aspectRatio: "16/9", maxHeight: "80vh" }}
+              >
                 <Image
                   src={images[selectedIndex].src}
                   alt={images[selectedIndex].alt}

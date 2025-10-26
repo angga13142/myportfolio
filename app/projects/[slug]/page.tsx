@@ -8,7 +8,12 @@ import { Redis } from "@upstash/redis";
 import { ImageGallery, ProjectHero } from "@/app/components/project-images";
 import { getProjectImages, getHeroImage } from "../project-images";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
-import { getProjectSchema, getBreadcrumbSchema, renderJsonLd } from "@/app/lib/structured-data";
+import {
+  getProjectSchema,
+  getBreadcrumbSchema,
+  renderJsonLd,
+} from "@/app/lib/structured-data";
+import DownloadCaseStudy from "@/app/components/DownloadCaseStudy";
 
 export const revalidate = 60;
 
@@ -18,9 +23,7 @@ type Props = {
   };
 };
 
-const redis = process.env.UPSTASH_REDIS_REST_URL 
-  ? Redis.fromEnv()
-  : null;
+const redis = process.env.UPSTASH_REDIS_REST_URL ? Redis.fromEnv() : null;
 
 export async function generateStaticParams(): Promise<Props["params"][]> {
   return allProjects
@@ -41,7 +44,9 @@ export default async function PostPage({ params }: Props) {
   let views = 0;
   if (redis) {
     try {
-      views = (await redis.get<number>(["pageviews", "projects", slug].join(":"))) ?? 0;
+      views =
+        (await redis.get<number>(["pageviews", "projects", slug].join(":"))) ??
+        0;
     } catch (error) {
       console.warn("Redis not available, using default view count");
       views = 0;
@@ -99,18 +104,40 @@ export default async function PostPage({ params }: Props) {
         )}
 
         {/* Mobile-optimized article container */}
-        <article className="px-4 sm:px-6 py-8 sm:py-12 mx-auto prose prose-zinc prose-quoteless
+        <article
+          className="px-4 sm:px-6 py-8 sm:py-12 mx-auto prose prose-zinc prose-quoteless
           prose-headings:text-zinc-900 prose-headings:font-bold
           prose-p:text-zinc-700 prose-p:leading-relaxed
           prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
           prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3
           prose-ul:my-4 prose-li:my-2
-          max-w-4xl">
+          max-w-4xl"
+        >
+          {/* Download Case Study Button */}
+          <div className="not-prose mb-8">
+            <DownloadCaseStudy
+              project={{
+                title: project.title,
+                description: project.description,
+                date: project.date || new Date().toISOString().split("T")[0],
+                category: project.category || "Heavy Equipment Operations",
+                achievements: [
+                  // Extract achievements from project - you can customize this
+                  "Professional heavy equipment operation",
+                  "Proven track record in mining operations",
+                  "Focus on safety and efficiency",
+                ],
+              }}
+            />
+          </div>
+
           <Mdx code={project.body.code} />
-          
+
           {images.length > 0 && (
             <div className="not-prose my-8 sm:my-12">
-              <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 sm:mb-6">Project Gallery</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 sm:mb-6">
+                Project Gallery
+              </h2>
               <ImageGallery images={images} />
             </div>
           )}

@@ -6,7 +6,8 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import { Eye, Clock, Calendar } from "lucide-react";
 
-export const revalidate = 60;
+// Revalidate every 1 hour instead of 60 seconds
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Blog - Heavy Equipment Operations & Safety",
@@ -22,7 +23,8 @@ export const metadata = {
   ],
   openGraph: {
     title: "Blog - Muhammad Nurhidayat Gani",
-    description: "Articles and insights on heavy equipment operations and safety management.",
+    description:
+      "Articles and insights on heavy equipment operations and safety management.",
     type: "website",
   },
 };
@@ -44,13 +46,12 @@ export default async function BlogPage() {
             Blog
           </h2>
           <p className="mt-4 text-zinc-400">
-            Insights and best practices from years of heavy equipment operations experience.
+            Insights and best practices from years of heavy equipment operations
+            experience.
           </p>
         </div>
 
-        {featured && (
-          <div className="w-full h-px bg-zinc-800" />
-        )}
+        {featured && <div className="w-full h-px bg-zinc-800" />}
 
         {/* Featured Article */}
         {featured && (
@@ -83,7 +84,7 @@ export default async function BlogPage() {
                   <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
                     {featured.description}
                   </p>
-                  
+
                   {featured.tags && featured.tags.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
                       {featured.tags.map((tag) => (

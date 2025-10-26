@@ -5,16 +5,21 @@ import { Metadata } from "next";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { UmamiAnalytics } from "./components/UmamiAnalytics";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import { SkipToContent } from "./components/SkipToContent";
 import { BackToTop } from "./components/BackToTop";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'https://aistorytell.me'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_URL || "https://aistorytell.me"
+  ),
   title: {
     default: "Muhammad Nurhidayat Gani - Portfolio",
     template: "%s | Muhammad Nurhidayat Gani",
   },
-  description: "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
+  description:
+    "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
   keywords: [
     "heavy equipment operator",
     "excavator operator",
@@ -73,7 +78,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Muhammad Nurhidayat Gani - Heavy Equipment Operator",
-    description: "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
+    description:
+      "Professional Heavy Equipment Operator specializing in excavator operations, with expertise in safety standards and equipment maintenance.",
     images: ["/og.png"],
   },
   icons: {
@@ -92,17 +98,21 @@ export const metadata: Metadata = {
   category: "portfolio",
 };
 
-// Poppins font with multiple weights for better typography
+// Poppins font with optimized weights for better typography
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700"], // Reduced from 8 weights to 3 most-used
   variable: "--font-poppins",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const calSans = LocalFont({
   src: "../public/fonts/CalSans-SemiBold.ttf",
   variable: "--font-calsans",
+  display: "swap",
+  preload: true,
 });
 
 export default function RootLayout({
@@ -113,15 +123,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={[poppins.variable, calSans.variable].join(" ")}>
       <head>
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://vercel-insights.com" />
         <UmamiAnalytics />
       </head>
       <body
-        className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-          }`}
+        className={`bg-black ${
+          process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+        }`}
       >
         <SkipToContent />
+        <GoogleAnalytics />
         {children}
         <BackToTop />
+        <WhatsAppButton />
         {/* Vercel Analytics & Speed Insights */}
         <VercelAnalytics />
         <SpeedInsights />

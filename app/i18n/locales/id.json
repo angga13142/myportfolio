@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "projects": "Proyek",
+    "blog": "Blog",
+    "resume": "Resume",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "greeting": "Halo, Saya",
+    "name": "Muhammad Nurhidayat Gani",
+    "title": "Operator Alat Berat Profesional",
+    "subtitle": "Spesialisasi dalam operasi excavator, manajemen keselamatan, dan optimasi produktivitas pertambangan",
+    "cta": {
+      "projects": "Lihat Proyek",
+      "contact": "Hubungi Saya"
+    }
+  },
+  "projects": {
+    "title": "Proyek",
+    "subtitle": "Portofolio profesional yang menampilkan pengalaman saya dalam operasi alat berat, manajemen keselamatan, dan optimasi produktivitas",
+    "viewCount": "kali dilihat",
+    "viewCount_plural": "kali dilihat",
+    "category": {
+      "all": "Semua Proyek",
+      "operations": "Operasional",
+      "safety": "Keselamatan",
+      "productivity": "Produktivitas",
+      "maintenance": "Pemeliharaan"
+    },
+    "readMore": "Baca Selengkapnya",
+    "backToProjects": "Kembali ke Proyek",
+    "gallery": "Galeri Proyek",
+    "downloadCaseStudy": "Unduh Studi Kasus",
+    "downloadingPDF": "Membuat PDF...",
+    "downloadInfo": "Studi kasus PDF profesional dengan detail proyek, metrik, dan pencapaian"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Wawasan dan berbagi pengetahuan tentang operasi alat berat, praktik keselamatan, dan praktik terbaik industri",
+    "readTime": "menit baca",
+    "readMore": "Baca Artikel",
+    "backToBlog": "Kembali ke Blog",
+    "tags": "Tag",
+    "relatedArticles": "Artikel Terkait"
+  },
+  "resume": {
+    "title": "Resume",
+    "subtitle": "Pengalaman Profesional & Kualifikasi",
+    "downloadPDF": "Unduh Resume",
+    "sections": {
+      "about": "Tentang Saya",
+      "experience": "Pengalaman Kerja",
+      "skills": "Keahlian",
+      "certifications": "Sertifikasi",
+      "achievements": "Pencapaian Utama",
+      "safety": "Rekam Jejak Keselamatan",
+      "equipment": "Kemahiran Alat Berat",
+      "contact": "Informasi Kontak"
+    },
+    "stats": {
+      "experience": "Tahun Pengalaman",
+      "projects": "Proyek Selesai",
+      "safetyRecord": "Rekam Jejak Keselamatan",
+      "efficiency": "Tingkat Efisiensi"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Telepon",
+      "location": "Lokasi",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "subtitle": "Mari diskusikan kebutuhan operasi alat berat Anda",
+    "form": {
+      "name": "Nama Anda",
+      "email": "Email Anda",
+      "subject": "Subjek",
+      "message": "Pesan",
+      "send": "Kirim Pesan",
+      "sending": "Mengirim...",
+      "success": "Pesan berhasil dikirim! Saya akan segera menghubungi Anda.",
+      "error": "Gagal mengirim pesan. Silakan coba lagi atau hubungi saya langsung."
+    },
+    "info": {
+      "title": "Informasi Kontak",
+      "email": "Alamat Email",
+      "phone": "Nomor Telepon",
+      "location": "Lokasi",
+      "availability": "Tersedia untuk"
+    }
+  },
+  "newsletter": {
+    "title": "Berlangganan Newsletter",
+    "description": "Dapatkan wawasan terbaru tentang operasi alat berat dan praktik keselamatan",
+    "placeholder": "Masukkan email Anda",
+    "button": "Berlangganan",
+    "subscribing": "Berlangganan...",
+    "success": "Berhasil berlangganan! Periksa email Anda.",
+    "error": "Berlangganan gagal. Silakan coba lagi."
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi",
+    "builtWith": "Dibuat dengan",
+    "and": "dan",
+    "deployedOn": "Di-deploy di"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Error",
+    "backToHome": "Kembali ke Beranda",
+    "notFound": "Halaman Tidak Ditemukan",
+    "readMore": "Baca Selengkapnya",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "close": "Tutup",
+    "open": "Buka",
+    "menu": "Menu",
+    "language": "Bahasa",
+    "share": "Bagikan",
+    "download": "Unduh",
+    "viewAll": "Lihat Semua",
+    "showMore": "Tampilkan Lebih Banyak",
+    "showLess": "Tampilkan Lebih Sedikit"
+  },
+  "seo": {
+    "defaultTitle": "Muhammad Nurhidayat Gani - Operator Alat Berat Profesional",
+    "defaultDescription": "Portofolio profesional Muhammad Nurhidayat Gani, spesialisasi dalam operasi excavator, manajemen keselamatan, dan optimasi produktivitas pertambangan"
+  }
+}

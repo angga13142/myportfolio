@@ -1,17 +1,40 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Navigation } from "../components/nav";
 import { Timeline } from "../components/Timeline";
 import { SkillsVisualization } from "../components/SkillBar";
 import { CertificateShowcase } from "../components/CertificateShowcase";
 import { StatsGrid } from "../components/StatCounter";
 import { TestimonialsCarousel } from "../components/Testimonials";
-import { DownloadResumeButton, PrintResumeButton } from "../components/DownloadResume";
+import {
+  DownloadResumeButton,
+  PrintResumeButton,
+} from "../components/DownloadResume";
 import { EquipmentGallery } from "../components/EquipmentGallery";
 import { ProgressCircles } from "../components/ProgressCircles";
 import { DayInLifeTimeline } from "../components/DayInLifeTimeline";
 import { CompanyLogos } from "../components/CompanyLogos";
 import { BeforeAfterComparison } from "../components/BeforeAfterComparison";
+import { SkillsMatrix } from "../components/SkillsMatrix";
+import { SafetyDashboard } from "../components/SafetyDashboard";
+import { VideoTestimonials } from "../components/VideoTestimonials";
+import { InteractiveCareerTimeline } from "../components/InteractiveCareerTimeline";
+import EquipmentMaintenanceLog from "../components/EquipmentMaintenanceLog";
 import Image from "next/image";
+
+// Dynamic import untuk 3D component (client-side only)
+const Equipment3DShowcase = dynamic(
+  () => import("../components/Equipment3DShowcase"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="glass p-8 rounded-xl text-center">
+        <div className="w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-zinc-400">Loading 3D Equipment Showcase...</p>
+      </div>
+    ),
+  }
+);
 
 export default function ResumePage() {
   // Career Stats
@@ -32,7 +55,8 @@ export default function ResumePage() {
       name: "Ahmad Susanto",
       role: "Site Supervisor",
       company: "PT. Nadesico Nickel Industry",
-      content: "Muhammad is one of our most reliable operators. His attention to detail in P2H inspections and consistent high productivity make him an invaluable team member. He maintains safety standards while achieving excellent production targets.",
+      content:
+        "Muhammad is one of our most reliable operators. His attention to detail in P2H inspections and consistent high productivity make him an invaluable team member. He maintains safety standards while achieving excellent production targets.",
       rating: 5,
       relationship: "Worked together at Nadesico Nickel",
     },
@@ -40,7 +64,8 @@ export default function ResumePage() {
       name: "Budi Hartono",
       role: "Operations Manager",
       company: "PT. LTPM Makassar",
-      content: "During his time with us, Muhammad demonstrated exceptional technical skills and problem-solving abilities. He was always proactive in identifying potential equipment issues before they became problems, resulting in minimal downtime.",
+      content:
+        "During his time with us, Muhammad demonstrated exceptional technical skills and problem-solving abilities. He was always proactive in identifying potential equipment issues before they became problems, resulting in minimal downtime.",
       rating: 5,
       relationship: "Direct supervisor at LTPM",
     },
@@ -48,7 +73,8 @@ export default function ResumePage() {
       name: "Rizki Firmansyah",
       role: "Maintenance Coordinator",
       company: "PT. Bintang Bumi Sulawesi",
-      content: "Muhammad's knowledge of excavator maintenance is impressive. He performs thorough daily checks and communicates any concerns clearly. His equipment has consistently been in the best condition among all operators.",
+      content:
+        "Muhammad's knowledge of excavator maintenance is impressive. He performs thorough daily checks and communicates any concerns clearly. His equipment has consistently been in the best condition among all operators.",
       rating: 5,
       relationship: "Worked together at Bintang Bumi",
     },
@@ -56,7 +82,8 @@ export default function ResumePage() {
       name: "Dwi Prasetyo",
       role: "Safety Officer",
       company: "PT. Nadesico Nickel Industry",
-      content: "As a safety officer, I appreciate Muhammad's commitment to safety protocols. He never compromises on P2H procedures and actively contributes to our safety culture. His zero-accident record speaks for itself.",
+      content:
+        "As a safety officer, I appreciate Muhammad's commitment to safety protocols. He never compromises on P2H procedures and actively contributes to our safety culture. His zero-accident record speaks for itself.",
       rating: 5,
       relationship: "Safety collaboration at Nadesico",
     },
@@ -70,7 +97,8 @@ export default function ResumePage() {
       location: "Indonesia",
       period: "2023 - Present",
       current: true,
-      description: "Operating excavator for nickel mining operations with focus on safety, efficiency, and team coordination.",
+      description:
+        "Operating excavator for nickel mining operations with focus on safety, efficiency, and team coordination.",
       achievements: [
         "Operating excavator for nickel mining operations",
         "Maintaining 95% operational efficiency",
@@ -85,7 +113,8 @@ export default function ResumePage() {
       company: "PT. LTPM Makassar",
       location: "Makassar, Indonesia",
       period: "2023",
-      description: "Excavation and material handling operations with emphasis on equipment maintenance and safety protocols.",
+      description:
+        "Excavation and material handling operations with emphasis on equipment maintenance and safety protocols.",
       achievements: [
         "Excavation and material handling operations",
         "Routine equipment maintenance and troubleshooting",
@@ -99,7 +128,8 @@ export default function ResumePage() {
       company: "PT. Bintang Bumi Sulawesi",
       location: "Sulawesi, Indonesia",
       period: "2021 - 2022",
-      description: "Loading and material transfer operations with focus on efficiency and equipment care.",
+      description:
+        "Loading and material transfer operations with focus on efficiency and equipment care.",
       achievements: [
         "Loading and material transfer operations",
         "Daily checkup care and maintenance",
@@ -204,13 +234,17 @@ export default function ResumePage() {
                 />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">Muhammad Nurhidayat Gani</h1>
-            <p className="text-xl text-zinc-400 mb-6 font-medium tracking-wide">Professional Heavy Equipment Operator</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
+              Muhammad Nurhidayat Gani
+            </h1>
+            <p className="text-xl text-zinc-400 mb-6 font-medium tracking-wide">
+              Professional Heavy Equipment Operator
+            </p>
             <div className="flex justify-center gap-6 text-zinc-500 flex-wrap text-sm mb-6">
               <span>📧 mnhidayatgani@gmail.com</span>
               <span>📞 +62 853-4590-2520</span>
             </div>
-            
+
             {/* Download/Print Buttons */}
             <div className="flex justify-center gap-4 flex-wrap print:hidden">
               <DownloadResumeButton />
@@ -220,62 +254,104 @@ export default function ResumePage() {
 
           {/* About */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-4 border-b border-zinc-800 pb-2 tracking-tight">About Me</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-4 border-b border-zinc-800 pb-2 tracking-tight">
+              About Me
+            </h2>
             <p className="text-zinc-400 leading-relaxed text-base">
-              A competent and certified Excavator Heavy Equipment Operator with experience in excavation, loading, and material transfer operations across various projects. Possesses a thorough understanding of occupational safety (K3) standards, routine equipment maintenance (P2H), and technical troubleshooting skills in the field.
+              A competent and certified Excavator Heavy Equipment Operator with
+              experience in excavation, loading, and material transfer
+              operations across various projects. Possesses a thorough
+              understanding of occupational safety (K3) standards, routine
+              equipment maintenance (P2H), and technical troubleshooting skills
+              in the field.
             </p>
           </section>
 
           {/* Career Impact Stats */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Career Impact</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">
+              Career Impact
+            </h2>
             <StatsGrid stats={careerStats} />
+          </section>
+
+          {/* Safety Dashboard - Interactive Charts */}
+          <section className="mb-12">
+            <SafetyDashboard />
+          </section>
+
+          {/* Interactive Career Timeline - Phase 2 Feature */}
+          <section className="mb-12">
+            <InteractiveCareerTimeline />
           </section>
 
           {/* Experience Timeline */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Experience</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">
+              Experience
+            </h2>
             <Timeline events={timelineEvents} />
           </section>
 
-          {/* Skills Visualization */}
+          {/* Skills Matrix - Interactive Radar Chart */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Skills & Expertise</h2>
+            <SkillsMatrix />
+          </section>
+
+          {/* Skills Visualization - Detailed Breakdown */}
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">
+              Skills & Expertise
+            </h2>
             <SkillsVisualization categories={skillCategories} />
           </section>
 
           {/* Certifications Showcase */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Training & Certifications</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">
+              Training & Certifications
+            </h2>
             <CertificateShowcase certificates={certificates} />
           </section>
 
           {/* Scope of Work */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Scope of Work</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">
+              Scope of Work
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg">
                 <span className="text-2xl">🚜</span>
-                <p className="text-zinc-400">Excavation, loading & material handling</p>
+                <p className="text-zinc-400">
+                  Excavation, loading & material handling
+                </p>
               </div>
               <div className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg">
                 <span className="text-2xl">🔧</span>
-                <p className="text-zinc-400">Daily checks (P2H) & routine maintenance</p>
+                <p className="text-zinc-400">
+                  Daily checks (P2H) & routine maintenance
+                </p>
               </div>
               <div className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg">
                 <span className="text-2xl">👥</span>
-                <p className="text-zinc-400">Collaboration and team coordination</p>
+                <p className="text-zinc-400">
+                  Collaboration and team coordination
+                </p>
               </div>
               <div className="flex items-start gap-3 p-4 border border-zinc-800 rounded-lg">
                 <span className="text-2xl">⚠️</span>
-                <p className="text-zinc-400">Compliance with safety standards (K3)</p>
+                <p className="text-zinc-400">
+                  Compliance with safety standards (K3)
+                </p>
               </div>
             </div>
           </section>
 
           {/* Hobbies */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">Hobbies & Interests</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-6 border-b border-zinc-800 pb-2">
+              Hobbies & Interests
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-4 border border-zinc-800 rounded-lg">
                 <span className="text-3xl mb-2 block">📚</span>
@@ -309,6 +385,16 @@ export default function ResumePage() {
             <EquipmentGallery />
           </section>
 
+          {/* 3D Equipment Showcase - Phase 2 Feature */}
+          <section className="my-12">
+            <Equipment3DShowcase />
+          </section>
+
+          {/* Equipment Maintenance Log - Phase 3 Feature */}
+          <section className="my-12">
+            <EquipmentMaintenanceLog />
+          </section>
+
           {/* Day in the Life Timeline */}
           <section className="my-12">
             <DayInLifeTimeline />
@@ -316,8 +402,10 @@ export default function ResumePage() {
 
           {/* Before/After Comparisons */}
           <section className="my-12">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">Impact & Results</h2>
-            
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2">
+              Impact & Results
+            </h2>
+
             {/* Safety Implementation Results */}
             <BeforeAfterComparison
               title="Safety Protocol Implementation"
@@ -327,12 +415,12 @@ export default function ResumePage() {
               beforeStats={[
                 { label: "Near-miss Incidents", value: "12/month" },
                 { label: "P2H Compliance", value: "75%" },
-                { label: "Safety Training", value: "Quarterly" }
+                { label: "Safety Training", value: "Quarterly" },
               ]}
               afterStats={[
                 { label: "Near-miss Incidents", value: "7/month (-40%)" },
                 { label: "P2H Compliance", value: "98%" },
-                { label: "Safety Training", value: "Monthly" }
+                { label: "Safety Training", value: "Monthly" },
               ]}
             />
 
@@ -346,20 +434,27 @@ export default function ResumePage() {
                 beforeStats={[
                   { label: "Daily Production", value: "650 BCM" },
                   { label: "Fuel Efficiency", value: "8.5 L/hr" },
-                  { label: "Cycle Time", value: "45 sec" }
+                  { label: "Cycle Time", value: "45 sec" },
                 ]}
                 afterStats={[
                   { label: "Daily Production", value: "800 BCM (+23%)" },
                   { label: "Fuel Efficiency", value: "7.0 L/hr (-18%)" },
-                  { label: "Cycle Time", value: "38 sec" }
+                  { label: "Cycle Time", value: "38 sec" },
                 ]}
               />
             </div>
           </section>
 
+          {/* Video Testimonials - Phase 2 Feature */}
+          <section className="mb-16">
+            <VideoTestimonials />
+          </section>
+
           {/* Testimonials */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">Professional Recommendations</h2>
+            <h2 className="text-3xl font-bold text-zinc-100 mb-8 border-b border-zinc-800 pb-2 tracking-tight">
+              Professional Recommendations
+            </h2>
             <TestimonialsCarousel testimonials={testimonials} />
           </section>
         </div>
