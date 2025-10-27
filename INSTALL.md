@@ -18,11 +18,13 @@ Complete guide to install, configure, and deploy the portfolio website.
 Before starting, ensure you have:
 
 ### Required
+
 - **Node.js 18+** or **Node.js 20+** ([Download](https://nodejs.org/))
 - **pnpm** package manager ([Install guide](https://pnpm.io/installation))
 - **Git** ([Download](https://git-scm.com/))
 
 ### Optional (for enhanced features)
+
 - **Upstash Redis** account ([Free tier](https://upstash.com/)) - For page view tracking
 - **Resend** account ([Free tier](https://resend.com/)) - For contact form and newsletter
 - **Google Analytics 4** account ([Free](https://analytics.google.com/)) - For analytics tracking
@@ -83,6 +85,7 @@ pnpm dev
 ```
 
 **Access the site:**
+
 - Homepage: http://localhost:3000
 - Projects: http://localhost:3000/projects
 - Resume: http://localhost:3000/resume
@@ -133,42 +136,50 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ### Variable Details
 
 #### 1. NEXT_PUBLIC_URL (Required)
+
 - **Local Development:** `http://localhost:3000`
 - **Production:** Your actual domain (e.g., `https://yourdomain.com`)
 - **Purpose:** Used for SEO metadata and canonical URLs
 
 #### 2. ADMIN_PASSWORD (Required for Admin Panel)
+
 - **Recommended:** 12+ characters with mix of letters, numbers, symbols
 - **Example:** `MySecure@Password123!`
 - **Purpose:** Protects `/admin` dashboard access
 - **Important:** Change from default value!
 
 #### 3. UPSTASH_REDIS_REST_URL & TOKEN (Optional)
+
 - **Get from:** [Upstash Console](https://console.upstash.com/)
 - **Purpose:** Track page views on projects and blog posts
 - **Without it:** Page views will show 0 (site works fine)
 
 **Setup Steps:**
+
 1. Create free account at [upstash.com](https://upstash.com/)
 2. Create new Redis database
 3. Copy REST URL and REST TOKEN from database page
 
 #### 4. RESEND_API_KEY (Optional)
+
 - **Get from:** [Resend Dashboard](https://resend.com/api-keys)
 - **Purpose:** Send emails from contact form and newsletter signup
 - **Without it:** Forms will show error (other features work)
 
 **Setup Steps:**
+
 1. Create free account at [resend.com](https://resend.com/)
 2. Verify your domain or use test domain
 3. Generate API key from dashboard
 
 #### 5. NEXT_PUBLIC_GA_MEASUREMENT_ID (Optional)
+
 - **Get from:** [Google Analytics](https://analytics.google.com/)
 - **Purpose:** Track events (PDF downloads, language switches, video plays)
 - **Without it:** Basic analytics from Vercel still work
 
 **Setup Steps:**
+
 1. Create Google Analytics 4 property
 2. Copy Measurement ID (format: `G-XXXXXXXXXX`)
 3. Add to environment variables
@@ -204,26 +215,29 @@ ADMIN_PASSWORD=your_secure_password
 ### Step 3: Manage Content
 
 **Dashboard:** http://localhost:3000/admin
+
 - View statistics (videos, testimonials, images)
 - Quick navigation to management pages
 
 **Video Management:** http://localhost:3000/admin/videos
+
 - **Operations Videos Tab:**
   - Add YouTube video IDs for equipment operations
   - Categories: Operations, Safety, Training, Achievement
   - Fields: Title, YouTube ID, Duration, Category, Description
-  
 - **Video Testimonials Tab:**
   - Add client/colleague testimonials
   - Fields: Name, Role, Company, Video ID, Rating, Date, Text
 
 **Photo Upload:** http://localhost:3000/admin/photos
+
 - Drag and drop photos or click to select
 - Auto-upload to `/public/gallery/`
 - Edit metadata: Alt text, Category, Caption
 - Delete unwanted photos
 
 **Data Storage:**
+
 - All content saved to `data/content.json`
 - Automatic timestamps for tracking changes
 - Real-time updates to website
@@ -231,6 +245,7 @@ ADMIN_PASSWORD=your_secure_password
 ### Step 4: Verify Changes
 
 After adding content:
+
 1. Visit homepage: http://localhost:3000
 2. Check "Operations Video Showcase" section
 3. Changes should appear immediately
@@ -294,7 +309,8 @@ RESEND_API_KEY=your_resend_key
 NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
 ```
 
-**Important:** 
+**Important:**
+
 - Use different `ADMIN_PASSWORD` for production
 - Update `NEXT_PUBLIC_URL` to your actual domain after deployment
 
@@ -399,6 +415,7 @@ pnpm start
 **Cause:** Dependencies not installed or corrupted
 
 **Solution:**
+
 ```bash
 # Remove node_modules and reinstall
 rm -rf node_modules
@@ -410,6 +427,7 @@ pnpm install
 **Cause:** Another application using port 3000
 
 **Solution:**
+
 ```bash
 # Kill process on port 3000 (Linux/Mac)
 lsof -ti:3000 | xargs kill -9
@@ -423,6 +441,7 @@ pnpm dev -- -p 3001
 **Cause:** Variables not loaded or server not restarted
 
 **Solution:**
+
 ```bash
 # Ensure .env.local exists
 ls -la .env.local
@@ -437,6 +456,7 @@ pnpm dev
 **Cause:** Type checking errors in code
 
 **Solution:**
+
 ```bash
 # Check TypeScript errors
 pnpm tsc --noEmit
@@ -450,6 +470,7 @@ pnpm tsc --noEmit
 **Cause:** Wrong password or session expired
 
 **Solution:**
+
 - Verify `ADMIN_PASSWORD` in `.env.local`
 - Clear browser cookies and try again
 - Check browser console for errors
@@ -459,6 +480,7 @@ pnpm tsc --noEmit
 **Cause:** Files not in `/public` folder or wrong paths
 
 **Solution:**
+
 - Ensure images are in `/public/` directory
 - Check file paths (case-sensitive)
 - Verify image extensions (.jpg, .png, .webp)
@@ -468,6 +490,7 @@ pnpm tsc --noEmit
 **Cause:** Contentlayer not built yet
 
 **Solution:**
+
 ```bash
 # Build contentlayer
 pnpm build
@@ -479,16 +502,19 @@ pnpm dev
 ### Getting Help
 
 **Documentation:**
+
 - [ADMIN_QUICK_START.md](./ADMIN_QUICK_START.md) - Admin panel guide
 - [README.md](./README.md) - Project overview
 - [.env.example](./.env.example) - Environment variables reference
 
 **External Resources:**
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Vercel Support](https://vercel.com/support)
 - [pnpm Documentation](https://pnpm.io/)
 
 **Community:**
+
 - [Next.js GitHub Discussions](https://github.com/vercel/next.js/discussions)
 - [Vercel Community](https://github.com/vercel/vercel/discussions)
 
@@ -497,25 +523,30 @@ pnpm dev
 ## 📊 Build Information
 
 ### Development Build
+
 ```bash
 pnpm dev
 ```
+
 - **Build Time:** ~10-15 seconds (first run)
 - **Hot Reload:** Instant updates
 - **Size:** Not optimized (includes dev tools)
 
 ### Production Build
+
 ```bash
 pnpm build
 ```
+
 - **Build Time:** ~1-2 minutes
-- **Output Size:** 
+- **Output Size:**
   - Homepage: ~94 KB
   - Projects: ~241 KB
   - Resume: ~277 KB
 - **Optimizations:** Tree-shaking, minification, image optimization
 
 ### Performance Targets
+
 - **Lighthouse Score:** 95+
 - **First Contentful Paint:** < 1.5s
 - **Time to Interactive:** < 3.5s
@@ -549,21 +580,25 @@ After installation and deployment, verify:
 After successful installation:
 
 1. **Customize Content:**
+
    - Use admin panel to add your videos and photos
    - Edit MDX files in `content/projects/` for case studies
    - Update profile information in `app/resume/page.tsx`
 
 2. **Configure Analytics:**
+
    - Set up Google Analytics 4
    - Enable Vercel Analytics (auto-enabled on deploy)
    - Monitor performance with Speed Insights
 
 3. **SEO Optimization:**
+
    - Submit sitemap to Google Search Console
    - Verify structured data with Google Rich Results Test
    - Monitor search performance
 
 4. **Performance Monitoring:**
+
    - Check Lighthouse scores regularly
    - Monitor Core Web Vitals
    - Review Vercel Analytics dashboard
